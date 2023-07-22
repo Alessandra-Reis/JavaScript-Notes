@@ -17,9 +17,11 @@
         <!-- *********************************** -->
 
         <article class="petdm1">
+
+            <!-- CAT 1 -->
             <div class="petdesc">
                 <div class="pethumb">
-                    <a href="products.html"><img src="../images/cat.jpg" height="200" width="auto"></a>
+                    <a href="pets.html"><img src="../images/cat.jpg" height="200" width="auto"></a>
                 </div>
                 <p>Cat</p>
             </div>
@@ -27,14 +29,57 @@
             <div class="petquantity">
                 <p>
                     <input type="text" value="1" id="catqty"> <br/>
-                    <button id="catqtyadd">+</button>
-                    <button id="catqtysubtract">-</button>
+                    <button id="catqtyadd" onclick="javascript: document.getElementById('catqty').value++;"> + </button>
+                    <button id="catqtysub" onclick="javascript: document.getElementById('catqty').value--;"> - </button>
+                    <!-- ASSIGNMENT - Assign a value to an object -->
                     <button id="catqtyzero" onclick="javascript: document.getElementById('catqty').value = 0;">Clear</button>
-                    <button id="catqtyfive">Add Five</button>
+                    <button id="catqtyfive" onclick="javascript: document.getElementById('catqty').value = 5;"> Add Five </button>                    
                 </p>
             </div>
 
+            <!-- CAT 2 -->
+
+            <div class="petdesc">
+                <div class="pethumb">
+                    <a href="pets.html"><img src="../images/blackcat.jpg" height="200" width="auto"></a>
+                </div>
+                <p>Black Cat</p>
+            </div>
+
+            <div class="petquantity">
+                <p>
+                    <input type="text" value="1" id="bcatqty"> <br/>
+                    <button id="bcatqtyadd" onclick="javascript: document.getElementById('bcatqty').value++;"> + </button>
+                    <button id="bcatqtysub" onclick="javascript: document.getElementById('bcatqty').value--;"> - </button>
+                    <!-- ASSIGNMENT - Assign a value to an object -->
+                    <button id="bcatqtyzero" onclick="javascript: document.getElementById('bcatqty').value = 0;">Clear</button>
+                    <button id="bcatqtyfive" onclick="javascript: document.getElementById('bcatqty').value = 5;"> Add Five </button>                    
+                </p>
+            </div>
+
+            <div class="petdesc">
+                <div class="pethumb">
+                    <a href="pets.html"><img src="../images/whitecat.jpg" height="200" width="auto"></a>
+                </div>
+                <p>White Cat</p>
+            </div>
+
+            <div class="petquantity">
+                <p>
+                    <input type="text" value="1" id="wcatqty"> <br/>
+                    <button id="wcatqtyadd" onclick="javascript: document.getElementById('wcatqty').value++;"> + </button>
+                    <button id="wcatqtysub" onclick="javascript: document.getElementById('wcatqty').value--;"> - </button>
+                    <!-- ASSIGNMENT - Assign a value to an object -->
+                    <button id="wcatqtyzero" onclick="javascript: document.getElementById('wcatqty').value = 0;">Clear</button>
+                    <button id="wcatqtyfive" onclick="javascript: document.getElementById('wcatqty').value = 5;"> Add Five </button>                    
+                </p>
+            </div>
+
+
+
         </article>
+
+
         
     </body>
 </html>
