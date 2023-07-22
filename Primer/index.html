@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title> Primer Topic </title>
+
+    <!-- USING EXTERNAL FILE -->
+    <script src="test.js" type="text/javascript"> </script>
+    <!-- !!add type into the script to reduce the chances of errors with different browsers -->
+
+</head>
+
+<body>
+
+    <!-- <script type="text/javascript"> 
+            alert('EXAMPLE OF INTERNAL ALERT WITH JS');
+        </script> -->
+
+    <script>
+        ///////////// CREATING VARIABLES /////////////
+
+        var score; // Declaration   
+        score = 1000; // Initialization
+
+        // Use the word var to ensure that the variable scope is correct
+
+        var age = 38; // Combined declaration and Initialization
+
+        function outputVars() {
+            //It will take the element from html code and then do the function that is set with javascript
+            document.getElementById("output").innerHTML = "Score: " + score + " Age: " + age;
+        }
+
+        ////////////////////////////////////////////
+
+        ///////////// IF STATEMENTS /////////////
+
+        var score2 = 17000;
+        var highscore = 15000;
+
+        function checkScore() {
+            if (score2 > highscore)
+            // ">" for greater than, "<" for less than condition, "==" for equal to condition, or false condition.
+            {
+                highscore = score2;
+                document.getElementById("output2").innerHTML = "You have the new high score. Congratulations!";
+            } else {
+                document.getElementById("output2").innerHTML = "Your score isn't the high score. Try again"
+            }
+
+        }
+
+        ////////////////////////////////////////////
+
+        ///////////// SWITCHING STATEMENTS /////////////
+
+        var zipCode = "06880"
+
+        function checkZip() {
+            switch (zipCode) {
+                case "06611":
+                    town = "Trumbull";
+                    break;
+                case "06066":
+                    town = "Vermon";
+                    break;
+                case "06443":
+                    town = "Madison";
+                    break;
+                case "06880":
+                    town = "Westport"; 
+                    break;
+                default:
+                    town="No Match";                   
+            }
+
+            document.getElementById("output3").innerHTML = "Town: " + town; 
+
+            ////////////////////////////////////////////
+                     
+
+        }
+
+        ///////////// WHILE AND DO WHILE LOOPS /////////////
+
+        // Loops give the opportunity to repeat a block of code a fixed number of times.
+        
+        function count1()
+            {
+                var x = 0;
+                //while the value is less than 16...
+                while(x < 16)
+                {
+                    
+                    document.getElementById('output4').innerHTML 
+                    //... this function will print the value of x...
+                    += (x + "<br/>");
+                    //... plus one until it reaches 15.
+                    x++;
+                    //x=x+5;
+                }
+
+            } 
+
+            function count2()
+            {
+                
+                var i = 15;
+
+                //It will ask the function to do something while another condition is true
+                do
+                
+                {
+                    //the Do while loop will run whatever is in the curly brackets at least once
+                    //even if the 
+                    document.getElementById('output5').innerHTML += (i + "<br/>");
+                    i--;
+                } 
+                while (i > -1);
+            } 
+
+        ////////////////////////////////////////////
+
+
+        ///////////// FOR LOOPS /////////////
+
+        function count3()
+        {
+            /*
+            LOOPS are a flexible way to run the same amount of code over and over again a fixed number of times, 
+            and the FOR LOOP is a compact style of loop that puts all the loop conditions in one line
+
+            FOR LOOP has essentially three parts: 
+            - The first describes where the loop is going to start counting - INITIALIZATION;
+            - The second part is called the CONTINUATION CONDITION, and the loop will continue to iterate while this condition is true;
+            - The third is the COUNTER and that will indicate how the loop's value changes 
+
+            */
+            for(var i=0; i < 101; i+=10)
+            {
+
+                //Now each time through the loop, it is going to run the code that's is inside the curly brackets.
+                //It gets the output area and it is going to output the value of i in that area.
+
+                document.getElementById("output6").innerHTML += i + "<br/>";
+            }
+
+
+        }
+
+        ////////////////////////////////////////////
+
+        ///////////// DECLARING ARRAYS /////////////
+
+        // There are 3 ways to declare arrays.
+
+        // >> The first way to declare is used to list out each array element and its array value or array index one by one.
+
+        var airlines = new Array();
+
+        airlines[0] = "Delta";
+        airlines[1] = "US Airways";
+        airlines[2] = "American";
+        airlines[3] = "jetBlue";
+        airlines[4] = "Virgin America";
+
+        // >> The second way to declare will declare different values inside the quotes.
+
+        var family = new Array ("Mark", "Brett", "Kerry", "Joan", "Rick")
+
+        // >> The third way is called the literal array
+
+        var states = ["Connecticut", "New York", "Vermont", "Texas", "Washington"]
+
+        function info()
+        {
+            document.getElementById('info').innerHTML = airlines[0] + "<br/>" + family[0] + "<br/>" + states[0];
+        }     
+
+        ////////////////////////////////////////////
+
+
+        ///////////// LOOPING THROUGH ARRAYS /////////////
+
+        var airlines2 = new Array();
+        airlines2[0] = "Delta";
+        airlines2[1] = "US Airways";
+        airlines2[2] = "American";
+        airlines2[3] = "jetBlue";
+        airlines2[4] = "Virgin America";
+        airlines2[5] = "United";
+        airlines2[6] = "Air Canada";
+        airlines2[7] = "Southwest";
+        airlines2[8] = "British Airways";
+        //airlines2[0] = "Delta";
+
+        function details()
+        {
+
+            //for(var i=0; i < airlines2.length; i++)
+            //the example below is more recommended than the one commented above
+            var len = airlines2.length;
+            for(var i=0; i < len; i++)
+            {
+                document.getElementById('details').innerHTML += airlines2[i] + "<br/>";
+            }
+        }
+
+        ////////////////////////////////////////////
+
+        ///////////// INTRODUCTION TO FUNCTIONS /////////////
+
+        function runFunction()
+        {
+
+            alert ('You clicked a button')
+            // document.getElementById('clickme').innerHTML += 
+
+        }
+
+
+
+        /////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+    </script>
+
+    <!-- Button for the CREATING VARIABLES topic -->
+    <p id="output"></p>
+    <button onclick="outputVars()">Output</button>
+
+    <!-- Button for the IF STATEMENTS topic -->
+    <p id="output2"></p>
+    <button onclick="checkScore()">Check Score</button>
+
+    <!-- Button for the SWITCHING STATEMENTS topic -->
+    <p id="output3"></p>
+    <button onclick="checkZip()">Check Town</button>
+
+    <!-- Buttons for the WHILE AND DO WHILE LOOPS topic -->
+    <p id="output4"></p>
+    <button onClick="count1()">Count A</button>
+
+    <p id="output5"></p>
+    <button onClick="count2()">Count B</button>
+
+    <!-- Button for the FOR LOOPS topic -->
+    <p id="output6"></p>
+    <button onClick="count3()">Count C</button>
+
+    <!-- Button for the DECLARING ARRAYS topic -->
+    <p id="info"></p>
+    <button onClick="info()">Flight Info</button>
+
+    <!-- Button for the LOOPING THROUGH ARRAYS topic -->
+    <p id="details"></p>
+    <button onClick="details()">Flight Details</button> <br> <br>
+
+    <!-- Introduction to Functions -->
+    <input type="submit" id="clickme" name="clickme" value="Click me" onclick="runFunction()" />
+
+</body>
+
+</html>

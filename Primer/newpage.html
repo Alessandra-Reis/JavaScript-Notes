@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title> Basic Data Types </title>
+        <script type="text/javascript">
+
+            // ***********************************************
+            // *********** UNDEFINED VARIABLES (a) ***********
+            // ***********************************************
+
+            // A variable created with no value assigned to it
+
+            var a = true; // the value below is undefined. 
+            // var a;
+            if (typeof a === 'undefined')
+            {
+                alert('a undefined');
+            } else {
+                alert('Variable a=' + a + '; ' + typeof a);
+            }
+
+            // *********************************************
+            // *********** NULL VARIABLES (b, c) ***********
+            // *********************************************
+
+            var b = {};
+            alert('Variable b=' + b + '; The variable B is of type: ' + typeof b)
+
+            // What null does is essentially strip the value out of a variable without actually removing its type
+            var c = 10;
+            c = null;
+            alert('Variable c=' + c + '; This variable C is of type: ' + typeof c)
+
+            // *********************************************
+            // ************ REGULAR EXPRESSIONS ************
+            // *********************************************
+
+            // Regular expressions are used to search for specific patterns of characters or a sequence of characters 
+
+            // There are two ways to create regular expressions
+            // 1 - Literal string version
+
+            var str = "This is a sample string";
+            // i as modifier -> which means that it's going to ignore the (upper or lower) case
+            var re = /Sample/i;
+
+            // re -> regular expression object. exec -> method 
+            /* 
+                When you run exec method on a string that you're checking it will give you back array 
+                containing the results that it found if it gets a hit. It will actually create a variable holding that text.) 
+            */
+            var check = re.exec(str);
+
+            // in the if statement it will check to see if this was actually equal to sth, so we get the result back and the alert.
+            if (check) {
+                alert("Found a match");
+                alert(check);
+            } else {
+                alert("No match found");
+            }
+
+            // Another method that can be used is the test method.
+            // It simply returns a true or false result depending on whether or not it found the pattern. 
+
+            var check2 = re.test(str);
+            alert(check2);
+
+            // 2 - The other way to create a Regular Expression is to actually use the Regular Expression object.
+            // Doing it literally or by creating the object you have more control in your code over what you can do with the Regular expression.
+
+            var str2 = "This is a sample string";
+            var re2 = new RegExp("sample", "i");
+
+            var check3 = re2.exec(str2);
+            if (check3) {
+                alert("Found another match");
+                alert(check3)
+            } else {
+                alert("No match found");
+            }
+
+            var check3 = re.test()
+
+            // ************************************
+            // ************ SUBSTRINGS ************
+            // ************************************
+
+            /* String processing
+
+            The ability to manipulate strings and extract pieces of strings from other strings is one of the more 
+            common things that you'll be doing when you are performing string processing 
+            */
+
+            /*
+                There are two different methods to create Substring
+                1- substr method 
+                You provide it with the starting index of where you want to start extracting a string,
+                and tell it how many characters you wish to pull out of the current string.
+            */
+
+            var sstr = "Hello world!";
+            var m1 = sstr.substr(2, 3);
+
+            // if H is in the position 0, the 2 is the first l and 3 from that is going to be "llo"
+
+            document.writeln("This is the result of the substr method: " + m1 + "<br>");
+
+            /*
+                2 - substring method
+                It returns the characters between the two indexes in a string.             
+            */
+
+            var m2 = sstr.substring(2, 3);
+            document.writeln("This is the result of the substring method: " + m2 + "<br>");
+
+
+        </script>
+    </head>
+</html>
