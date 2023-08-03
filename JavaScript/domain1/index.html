@@ -1,85 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <title> JavaScript </title>
+    <title>JavaScript</title>
 
     <!-- USING EXTERNAL FILE -->
     <!-- <script src="test.js" type="text/javascript"> </script> -->
     <!-- !!add type into the script to reduce the chances of errors with different browsers -->
+  </head>
 
-</head>
-    <body>
+  <body>
+    <!-- *********************************** -->
+    <!-- ASSIGNMENT AND ARITHMETIC OPERATORS -->
+    <!-- *********************************** -->
 
-        <!-- *********************************** -->
-        <!-- ASSIGNMENT AND ARITHMETIC OPERATORS -->
-        <!-- *********************************** -->
+    <article class="productsdm1">
+      <!-- ITEM 1 -->
+      <div class="itemdesc" id="mantotal">
+        <div class="itemhumb">
+          <a href="products.html"
+            ><img src="../images/mandolin.jpg" height="200" width="auto"
+          /></a>
+        </div>
+        <p>Mandolin</p>
+      </div>
 
-        <article class="petdm1">
+      <div class="itemquantity">
+        <p>
+          <input type="text" value="1" id="manqty" /> <br />
+          <button
+            id="manqtyadd"
+            onclick="javascript: document.getElementById('manqty').value++;"
+          >
+            +
+          </button>
+          <button
+            id="manqtysub"
+            onclick="javascript: document.getElementById('manqty').value--;"
+          >
+            -
+          </button>
+          <!-- ASSIGNMENT - Assign a value to an object -->
+          <button
+            id="manqtyzero"
+            onclick="javascript: document.getElementById('manqty').value = 0;"
+          >
+            Clear
+          </button>
+          <button
+            id="manqtyfive"
+            onclick="javascript: document.getElementById('manqty').value = 5;"
+          >
+            Add Five
+          </button>
+        </p>
+      </div>
 
-            <!-- CAT 1 -->
-            <div class="petdesc">
-                <div class="pethumb">
-                    <a href="pets.html"><img src="../images/cat.jpg" height="200" width="auto"></a>
-                </div>
-                <p>Cat</p>
-            </div>
+      <!-- ITEM 2 -->
+      <div class="itemdesc" id="drumtotal">
+        <div class="itemhumb">
+          <a href="products.html"
+            ><img src="../images/drum.jpeg" height="200" width="auto"
+          /></a>
+        </div>
+        <p>Drum</p>
+      </div>
 
-            <div class="petquantity">
-                <p>
-                    <input type="text" value="1" id="catqty"> <br/>
-                    <button id="catqtyadd" onclick="javascript: document.getElementById('catqty').value++;"> + </button>
-                    <button id="catqtysub" onclick="javascript: document.getElementById('catqty').value--;"> - </button>
-                    <!-- ASSIGNMENT - Assign a value to an object -->
-                    <button id="catqtyzero" onclick="javascript: document.getElementById('catqty').value = 0;">Clear</button>
-                    <button id="catqtyfive" onclick="javascript: document.getElementById('catqty').value = 5;"> Add Five </button>                    
-                </p>
-            </div>
+      <div class="itemquantity">
+        <p>
+          <input type="text" value="1" id="drumqty" /> <br />
+          <button
+            id="drumqtyadd"
+            onclick="javascript: document.getElementById('drumqty').value++;"
+          >
+            +
+          </button>
+          <button
+            id="drumqtysub"
+            onclick="javascript: document.getElementById('drumqty').value--;"
+          >
+            -
+          </button>
+          <!-- ASSIGNMENT - Assign a value to an object -->
+          <button
+            id="drumqtyzero"
+            onclick="javascript: document.getElementById('drumqty').value = 0;"
+          >
+            Clear
+          </button>
+          <button
+            id="drumqtyfive"
+            onclick="javascript: document.getElementById('drumqty').value = 5;"
+          >
+            Add Five
+          </button>
+        </p>
+      </div>
 
-            <!-- CAT 2 -->
+      <!-- ITEM 3 -->
+      <div class="itemdesc">
+        <div class="itemhumb">
+          <a href="products.html"
+            ><img src="../images/trombone.jpg" height="200" width="auto"
+          /></a>
+        </div>
+        <p>Trombone</p>
+      </div>
 
-            <div class="petdesc">
-                <div class="pethumb">
-                    <a href="pets.html"><img src="../images/blackcat.jpg" height="200" width="auto"></a>
-                </div>
-                <p>Black Cat</p>
-            </div>
+      <div class="itemquantity" id="tromtotal">
+        <p>
+          <input type="text" value="1" id="tromqty" /> <br />
+          <button
+            id="tromqtyadd"
+            onclick="javascript: document.getElementById('tromqty').value++;"
+          >
+            +
+          </button>
+          <button
+            id="tromqtysub"
+            onclick="javascript: document.getElementById('tromqty').value--;"
+          >
+            -
+          </button>
+          <!-- ASSIGNMENT - Assign a value to an object -->
+          <button
+            id="tromqtyzero"
+            onclick="javascript: document.getElementById('tromqty').value = 0;"
+          >
+            Clear
+          </button>
+          <button
+            id="tromqtyfive"
+            onclick="javascript: document.getElementById('tromqty').value = 5;"
+          >
+            Add Five
+          </button>
+        </p>
+      </div>
+    </article>
 
-            <div class="petquantity">
-                <p>
-                    <input type="text" value="1" id="bcatqty"> <br/>
-                    <button id="bcatqtyadd" onclick="javascript: document.getElementById('bcatqty').value++;"> + </button>
-                    <button id="bcatqtysub" onclick="javascript: document.getElementById('bcatqty').value--;"> - </button>
-                    <!-- ASSIGNMENT - Assign a value to an object -->
-                    <button id="bcatqtyzero" onclick="javascript: document.getElementById('bcatqty').value = 0;">Clear</button>
-                    <button id="bcatqtyfive" onclick="javascript: document.getElementById('bcatqty').value = 5;"> Add Five </button>                    
-                </p>
-            </div>
+    <article>
+      <div>
+        <h4 id="subtotal" style="margin-top: 0">Subtotal:</h4>
+        <h4 id="salesTax" style="margin-top: 0">Sales Tax:</h4>
+        <h4 id="discount" style="margin-top: 0">Discount:</h4>
+        <p>&nbsp;</p>
+        <h2 style="margin-top: 0">Total:</h2>
+      </div>
 
-            <div class="petdesc">
-                <div class="pethumb">
-                    <a href="pets.html"><img src="../images/whitecat.jpg" height="200" width="auto"></a>
-                </div>
-                <p>White Cat</p>
-            </div>
+      <div class="itemtotal">
+        <p id="subtotal">&nbsp;</p>
+        <p id="salesTax">&nbsp;</p>
+        <p id="discount">10.00;</p>
+        <p>______________</p>
+        <h2 style="margin-top: 0" id="grandtotal">total</h2>
+      </div>
+    </article>
 
-            <div class="petquantity">
-                <p>
-                    <input type="text" value="1" id="wcatqty"> <br/>
-                    <button id="wcatqtyadd" onclick="javascript: document.getElementById('wcatqty').value++;"> + </button>
-                    <button id="wcatqtysub" onclick="javascript: document.getElementById('wcatqty').value--;"> - </button>
-                    <!-- ASSIGNMENT - Assign a value to an object -->
-                    <button id="wcatqtyzero" onclick="javascript: document.getElementById('wcatqty').value = 0;">Clear</button>
-                    <button id="wcatqtyfive" onclick="javascript: document.getElementById('wcatqty').value = 5;"> Add Five </button>                    
-                </p>
-            </div>
+    <article class="item">
+      <div class="itemdesc">
+        <p>&nbsp;</p>
+      </div>
 
+      <!--
+            INCOMPLETO // VIDEO
+            <div class="order_buttons">
+            <p>
+                <input type="button" class="buttons" value="Update Cart" onclick="javascript: document.getElementById('subtotal').innerHTML                      
+                      = parseFloat(document.getElementById('mantotal').innerHTML)
+                      + parseFloat(document.getElementById('drumtotal').innerHTML)
+                      + parseFloat(document.getElementById('tromtotal').innerHTML);
+                      
+                      document.getElementById('grandtotal').innerHTML                      
+                      = parseFloat(document.getElementById('subtotal').innerHTML)
+                      - parseFloat(document.getElementById('discount').innerHTML);" />
+            </p>
+        </div> -->
 
+      <!-- !!! trecho inserido não relacionado ao curso/video -->
 
+      <div class="order_buttons">
+        <p>
+          <input
+            type="button"
+            class="buttons"
+            value="Update Cart"
+            onclick="calculateTotal()"
+          />
+        </p>
+      </div>
+    </article>
+
+    <!-- !!! trecho inserido não relacionado ao curso/video || Para testar o codigo-->
+
+    <script>
+      function calculateTotal() {
+        // Prices of items
+        const mandolinPrice = 100;
+        const drumPrice = 50;
+        const trombonePrice = 200;
+
+        // Quantities of items
+        const mandolinQty = parseFloat(
+          document.getElementById("manqty").value || 0
+        );
+        const drumQty = parseFloat(
+          document.getElementById("drumqty").value || 0
+        );
+        const tromboneQty = parseFloat(
+          document.getElementById("tromqty").value || 0
+        );
+
+        // Calculate subtotals for each item
+        const mandolinSubtotal = mandolinQty * mandolinPrice;
+        const drumSubtotal = drumQty * drumPrice;
+        const tromboneSubtotal = tromboneQty * trombonePrice;
+
+        // Calculate the overall subtotal
+        const subtotal = mandolinSubtotal + drumSubtotal + tromboneSubtotal;
+
+        // Display the subtotal
+        document.getElementById(
+          "subtotal"
+        ).innerHTML = `Subtotal: $${subtotal.toFixed(2)}`;
+
+        // Apply the discount (assuming a discount of $10)
+        const discountAmount = 10;
+        const total = subtotal - discountAmount;
+
+        // Display the total
+        document.getElementById(
+          "grandtotal"
+        ).innerHTML = `Total: $${total.toFixed(2)}`;
+      }
+    </script>
+
+    <!-- ******** -->
+    <!-- division -->
+    <!-- ******** -->
+
+    <section id="thumnails">
+      <div id="details">
+        <img src="../images/soundproofing.jpg" height="200" />
+
+        <article class="itemdetails">
+          <h2>Soundproofing Calculator</h2>
+          <p>
+            It's important to make sure you use the correct amount of
+            soundproofing
+          </p>
+          <p>&nbsp;</p>
+
+          <p>
+            Enter the square footage: <input type="text" id="sqft" />
+            <input
+              type="button"
+              class="buttons"
+              value="Calculate"
+              onclick="document.getElementById('sqftneeded').innerHTML = 'You will need ' 
+                        // the division amount is being parsed as an integer, which will actually cut off every after the decimal point without rounding up. 
+                        //to make sure that in this example the customer would get enough pieces, we need to add one to the calculation.
+                        + parseInt(document.getElementById('sqft').value / 25 +1) + ' pieces' ;
+                        
+                        // *** modulus***
+                        document.getElementById('sqftremaining').innerHTML = 'The last piece will have ' 
+                        //modulus symbol is the percentage symbol
+                        + parseInt(document.getElementById('sqft').value % 25) + ' square feet used.' ; 
+                        "/>
+          </p>
+
+          <!-- Multiplication would be something like:  (parseFloat(document.getElementById('subtotal').innerHTML)* .07)-->
+
+          <br />
+
+          <!-- ******* -->
+          <!-- modulus -->
+          <!-- ******* -->
+
+          
+
+          <p id="sqftneeded"></p>
+          <p id="sqftremaining"></p>
         </article>
-
-
-        
-    </body>
+      </div>
+    </section>
+  </body>
 </html>
+
+<!-- 
+
+    .toFix command helps to get a value to fix to two decimal points.
+
+    >>>            (parseFloat(document.getElementById('subtotal').innerHTML)* .07).toFixed(2);
+ -->
