@@ -1,4 +1,4 @@
-// alert('external file');
+alert('external file');
 
 
 
