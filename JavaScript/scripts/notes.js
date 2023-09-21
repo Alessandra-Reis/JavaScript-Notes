@@ -454,6 +454,8 @@ ________________________________________________________________________________
       -> In storing data, sometimes a variable will be defined to be empty. By definition, that field is null.
          NULL means EMPTY, not zero!
 
+         A variable that has been declared, but is either set to null or, at one time was a different value and is now null
+
       ============
       CODE EXAMPLE
       ============
@@ -468,13 +470,474 @@ ________________________________________________________________________________
 
       !!! UNDEFINED !!!
 
+      -> An Undefined variable is one that has been declared, but has never had a value. In other words, 
+         it does not have a number, Boolean or string value, and it is not considered null.
+         Variables which are declared specifically as variables but have never had anything assigned to them.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      // var is being used to ensure that JS knows these are variables and not objects.
+      
+      var subtotal;
+      var grandtotal; 
+
+      // Now these variables are declared but undefined, since they have never had a value assigned to them. 
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! 'TypeOf' OPERATOR !!!
+
+      -> The typeof operator reveals which data type is assigned to a variable. This is a valuable tool in JS
+         especially since we do not assign data types to variables when declaring them.
+
+        If a variable is not acting the way it should, check the data type is a way to make sure if that is not the problem.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      On the browser >> open developer tools >> open the console >> write: "typeof(subtotal)" and press enter. 
+      Then the output will show which type of variable the "subtotal" is.
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! TYPE CHECKING FUNCTIONS !!!
+
+      -> JavaScript is a loosely-typed language, there are not that many types.
+         JS makes no distinction between an integer and floating number.
+         Any numbered variable is a floating decimal in JavaScript. 
+         However, we can use type checking functions to see if a specific number is an integer or not.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      If we type in the console (through the web developer tools) the command: 
+      
+      >> Number.isInteger(variableName)
+
+      And then press enter, it will print true or false as a result.
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! USE STRICT !!!
+
+      -> One way to make sure we are declaring variables as explicit variables is to use the use strict command.
+         To force any variable in this function to be explicitly declared.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      function getPracticeHours() {
+        "use strict";
+        try
+        {
+          //to make the "use strict" work it is important to add "var" before the variable.
+          //in this way you tell JavaScript exactly what is a variable and what is an object, that means a faster performance.
+          var hoursEntered = parseInt(document.getElementById('practiceHours').value);
+          document.getElementById('practiceWeeks').innerHTML = 
+                'It will take you ' +20 / hoursEntered + 'weeks to finish the course.'
+                + hoursEntered + ' hours per week.';
+        }
+        catch(error)
+        {
+          alert("Error: " + error.description);
+        }
+      }
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! CONVERT BETWEEN DATA TYPES !!!
+
+      -> 
+          What is straightforward for variables, it is not so straightforward for objects, such as input fields.
+          In many cases, a data type has to be explicity converted before it can be used.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+     
+         <div class="order_buttons">
+            <p>
+                <input type="button" class="buttons" value="Update Cart" 
+                    onclick="javascript: document.getElementById('subtotal').innerHTML                      
+                        = parseFloat(document.getElementById('mantotal').innerHTML)
+                        + parseFloat(document.getElementById('drumtotal').innerHTML)
+                        + parseFloat(document.getElementById('tromtotal').innerHTML);
+                        document.getElementById('salesTax').innerHTML = parseFloat(document.getElementById('subtotal).innerHTML * .07).toFixed(2);
+                        document.getElementById('grandTotal').innerHTML
+                            = parseFloat(document.getElementById('subtotal').innerHTML)
+                            + parseFloat(document.getElementById('salesTax').innerHTML)
+                            - parseFloat(document.getElementById('discount').innerHTML)).tpFixed(2);
+                      
+                      <p><input type="button" class="buttons" value="Checkout" </p>
+            </p>
+         </div>
+
+          // In the piece of code above if we look for the typeof the 'mantotal' the data type will be identified as an OBJECT.
+          // In this case we can't add objects, only numbers.
+
+          // parseFloat converts this to a float decimal, parseInt would convert any object to a whole number
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! FORMAT NUMBERS !!!
+
+      -> Even though JS doesn't have a bunch of different data types for numbers. Sometimes, though, 
+         We need to control the amount of decimal places past a number. 
+         Sometimes we need numbers to be whole numbers.
+
+         Below there are two examples of formatting numbers. 
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      (EXAMPLE 1 - toFixed - Line 613)
+
+         <div class="order_buttons">
+            <p>
+                <input type="button" class="buttons" value="Update Cart" 
+                    onclick="javascript: document.getElementById('subtotal').innerHTML                      
+                        = parseFloat(document.getElementById('mantotal').innerHTML)
+                        + parseFloat(document.getElementById('drumtotal').innerHTML)
+                        + parseFloat(document.getElementById('tromtotal').innerHTML);
+                        document.getElementById('salesTax').innerHTML = parseFloat(document.getElementById('subtotal).innerHTML * .07).toFixed(2);
+                        document.getElementById('grandTotal').innerHTML
+                            = parseFloat(document.getElementById('subtotal').innerHTML)
+                            + parseFloat(document.getElementById('salesTax').innerHTML)
+                            - parseFloat(document.getElementById('discount').innerHTML)).tpFixed(2);
+                      
+                      <p><input type="button" class="buttons" value="Checkout" </p>
+            </p>
+         </div>
+
+      (EXAMPLE 2 - Convert a number to currency)
+
+      ... 
+
+                            = '$ ' + parseFloat(document.getElementById('subtotal').innerHTML)
+                            + parseFloat(document.getElementById('salesTax').innerHTML)
+                            - parseFloat(document.getElementById('discount').innerHTML)).tpFixed(2);
+      
+      ...
+
+      // JS doesn't have a built-in currency format, so the easiest way to accomplish this is to just add a dollar sign in front of a number.
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! STRING OPERATIONS !!!
+
+      -> JS has many different ways in which strings can be manipulated.
+         Eg.: 
+            - Retrieve the length of a string
+            - Concatente strings
+
+         toFixed -> Returns a number with a fixed number of decimals.
+         toPrecision -> Returns a number with a fixed number of digits.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      function getPracticeHours() {
+        "use strict";
+        try{
+          var hoursEntered = parseInt (document.getElementById('practiceHours').value)
+              var msg1 = 'It will take you'
+              var msg2 = (20 / hoursEntered).toPrecision(3);
+              var msg3 = ' weeks to finish this program.'
+              var msg4 = 'Can you do '
+              var msg5 = hoursEntered
+              var msg6 = ' per week for '
+              var msg7 = 'weeks? Or is this just a "dream?"'
+
+              document.getElementById('practiceWeeks').innerHTML = 
+                  msg1.concat(msg2, msg3) + '<br />' + msg4.concat 
+                  (msg5, msg6, msg2, msg7);
+
+                  //The var is needed because this code is set to "use strict", which means variable types must be declared.
+                  var currentDate = new Date();
+
+              //document.getElementById('practiceWeeks').innerHTML += 
+              '<br />' + currentDate.toLocaleString(); 
+        }
+
+        catch(error)
+        {
+
+        }
+
+      }
+      
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! NESTING QUOTES !!!
+
+      -> When it comes to using single or double, it usually does not matter which ones you use. 
+
+         - It matters though when you are nesting quotes. You have to go with opposites in this case. 
+           If you start with single quotes, use double quotes inside.
+
+
+
+      ============
+      CODE EXAMPLE
+      ============
+
+              // to use dream in double quotes, is needed to wrap single quotes around it.
+              var msg7 = 'weeks? Or is this just a "dream?"'
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! INITIALIZATION !!!
+
+      -> Initialization is the act of storing a value in a variable.
+         Declaration is the act of create new variable.
+
+         - If you know what a variable should store when you declare it, by all means, initialize it then.
+           If not, you can initialize it when needed.
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      //This variable is declared and initialized.
+      discount = 10;
+      // subtotal and grandtotal are declared but not initialized
+      var subtotal;
+      var grandtotal;
+      checkOutExists = false;
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                    ----------------------
+                                    DECLARE AND USE ARRAYS
+                                    ----------------------  
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+
+      !!! BUILD AND DEFINE AN ARRAY !!!
+
+      -> An array is defined as an object with multiple containers, holding multiple values.
+         
+         - Think of a variable as a single box storing a single item.
+         - Think of an array as having a box but with multiple sections, with each section storing one or more items.
+              
+      ============
+      CODE EXAMPLE
+      ============
+
+      SINGLE-DIMENSIONAL ARRAY:
+
+      <button class="buttons" onclick="updateList();"> Update list </button>
+
+      <script>
+          tuningList =["Tuning Lever", "Tuning Fork"];
+          function updateList(){
+            document.getElementById('tuningList').innerHTML = tuningList;
+            document.getElementById('tuningList').innerHTML += "<br /> A tuning lever and tuning fork is a must-have for any tuning kit";
+          }
+      </script>
+  
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! ITERATION AND LENGTH !!!
+
+      -> To show one item at a time in the form of a list, like a bulleted list, we need two things:
+      
+          - A way to iterate through the array;
+          - And a way to determine the arrays length.
+
+          
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      - To use a loop to iterate through the array list and show each item as a bulleted item:
+
+       <script>
+          tuningList =["Tuning Lever", "Tuning Fork"];
+          function updateList(){
+            document.getElementById('tuningList').innerHTML = "<ul>";
+            for (var i = 0; i < tuningList.length; i++) {
+              document.getElementById('tuningList').innerHTML += "<li>" + tuningList[i] + "</li>"
+            }
+            document.getElementById('tuningList').innerHTML = "</ul>";
+            document.getElementById('tuningList').innerHTML += "<br /> A tuning lever and tuning fork is a must-have for any tuning kit";
+          }
+      </script>
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+       !!! INITIALIZATION !!!    
+       
+       - The concept of initialization works for arrays in the same way as it does for variables. 
+         Arrays that are coded but not filled in, are considered declared.
+         When the array is filled with values, it becomes initialized. In other words, these are initialized when they start to hold data.
+              
+      ============
+      CODE EXAMPLE
+      ============     
+      
+      // this is a initialized array because it has values inside of the square brackets.
+      tuningList =["Tuning Lever", "Tuning Fork"];
+
+      // this array is declared but not initialized as it has no values in it.
+      fieldTotals = [];
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! SORTING AND SEARCHING !!!
+
+      - To the beginning of the function that updates and display the array, it is needed to add a statement to sort the array:
+        with the nameOfTheArray.sort()
+
+        -> To search through the console:
+
+              >> tuningList.indexOf("Tuning Lever") > -1;
+
+           It will print as 'true', meaning that this Tuning Lever phrase is somewhere inside of this array 
+
+
+      ============
+      CODE EXAMPLE
+      ============    
+
+      <script>
+          tuningList =["Tuning Lever", "Tuning Fork"];
+          fieldTotals = [];
+          function updateList(){
+            // the list will be sorted alphabetically
+            tuningList.sort();
+            document.getElementById('tuningList').innerHTML = "<ul>";
+            for (var i = 0; i < tuningList.length; i++) {
+              document.getElementById('tuningList').innerHTML += "<li>" + tuningList[i] + "</li>"
+            }
+            document.getElementById('tuningList').innerHTML = "</ul>";
+            document.getElementById('tuningList').innerHTML += "<br /> A tuning lever and tuning fork is a must-have for any tuning kit";
+          }
+      </script>
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! PUSH AND POP !!!
+
+
+
+
+
+      ============
+      CODE EXAMPLE
+      ============
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! SHIFT AND UNSHIFT !!!
+
+
+
+
+      ============
+      CODE EXAMPLE
+      ============
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! ACCESS AN ELEMENT !!!
+
+
+
+      ============
+      CODE EXAMPLE
+      ============
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! UNDERSTAND MULTI-DIMENSIONAL ARRAYS !!!
+
+
+
+
+
+      ============
+      CODE EXAMPLE
+      ============
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
 
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
-      !!! TYPE OF OPERATOR !!!
+      !!!  !!!
 
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!!  !!!
 
 
 ____________________________________________________________________________________________________
