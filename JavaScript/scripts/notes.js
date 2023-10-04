@@ -565,9 +565,8 @@ ________________________________________________________________________________
 
      
          <div class="order_buttons">
-            <p>
-                <input type="button" class="buttons" value="Update Cart" 
-                    onclick="javascript: document.getElementById('subtotal').innerHTML                      
+            <p> <input type="button" class="buttons" value="Update Cart" 
+                  onclick="javascript: document.getElementById('subtotal').innerHTML                      
                         = parseFloat(document.getElementById('mantotal').innerHTML)
                         + parseFloat(document.getElementById('drumtotal').innerHTML)
                         + parseFloat(document.getElementById('tromtotal').innerHTML);
@@ -575,7 +574,7 @@ ________________________________________________________________________________
                         document.getElementById('grandTotal').innerHTML
                             = parseFloat(document.getElementById('subtotal').innerHTML)
                             + parseFloat(document.getElementById('salesTax').innerHTML)
-                            - parseFloat(document.getElementById('discount').innerHTML)).tpFixed(2);
+                            - parseFloat(document.getElementById('discount').innerHTML)).toFixed(2);
                       
                       <p><input type="button" class="buttons" value="Checkout" </p>
             </p>
@@ -614,7 +613,7 @@ ________________________________________________________________________________
                         document.getElementById('grandTotal').innerHTML
                             = parseFloat(document.getElementById('subtotal').innerHTML)
                             + parseFloat(document.getElementById('salesTax').innerHTML)
-                            - parseFloat(document.getElementById('discount').innerHTML)).tpFixed(2);
+                            - parseFloat(document.getElementById('discount').innerHTML)).toFixed(2);
                       
                       <p><input type="button" class="buttons" value="Checkout" </p>
             </p>
@@ -626,7 +625,7 @@ ________________________________________________________________________________
 
                             = '$ ' + parseFloat(document.getElementById('subtotal').innerHTML)
                             + parseFloat(document.getElementById('salesTax').innerHTML)
-                            - parseFloat(document.getElementById('discount').innerHTML)).tpFixed(2);
+                            - parseFloat(document.getElementById('discount').innerHTML)).toFixed(2);
       
       ...
 
@@ -652,7 +651,7 @@ ________________________________________________________________________________
       function getPracticeHours() {
         "use strict";
         try{
-          var hoursEntered = parseInt (document.getElementById('practiceHours').value)
+          var hoursEntered = parseInt (document.getElementById('practiceHours').value);
               var msg1 = 'It will take you'
               var msg2 = (20 / hoursEntered).toPrecision(3);
               var msg3 = ' weeks to finish this program.'
@@ -994,28 +993,226 @@ ________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------
 
 
-!!! PROPERTIES !!!
+      !!! PROPERTIES !!!
+
+      ->    JavaScript uses objects in code. 
+            Objects can be manipulated. 
+            HTML tags, arrays, and variables are examples of objects.
+            Windows and screen sizes are example of browser objects
+            These objects have properties, which are characteristics that define them.
+            It can help to think of objects as items, things, or even nouns.
+            Properties can be thought of as characteristics or adjectives.
+
+            Sometimes, properties need to be retrieved, and other times they need to be changed.
+
+      ============
+      CODE EXAMPLE
+      ============
 
 
+      <div class="itemtotal">
 
+            //  *** The paragraph tag (p) is the object, and the subtotal is contained in the id property
+            <p id="subtotal">&nbsp;</p>
+            <p id="salesTax">&nbsp;</p>
+            <p id="discount">10.00;</p>
+            <p>______________</p>
+            <h2 style="margin-top: 0" id="grandtotal">total</h2>
+      </div>
+
+      ____________________________________________
+     
+         <div class="order_buttons">
+            <p> <input type="button" class="buttons" value="Update Cart" 
+
+                  // *** document is an object. *** 'subtotal' is a property of an HTML object. 
+                  onclick="javascript: document.getElementById('subtotal').innerHTML 
+
+                        // *** innerHTML is a property of the object. This property is being changed, because it is being set to be equal to the addition of three other properties                                                                               | This property is being changed,                                        
+                        = parseFloat(document.getElementById('mantotal').innerHTML)
+                        + parseFloat(document.getElementById('drumtotal').innerHTML)
+                        + parseFloat(document.getElementById('tromtotal').innerHTML);
+                        document.getElementById('salesTax').innerHTML = parseFloat(document.getElementById('subtotal).innerHTML * .07).toFixed(2);
+                        document.getElementById('grandTotal').innerHTML
+                            = parseFloat(document.getElementById('subtotal').innerHTML)
+                            + parseFloat(document.getElementById('salesTax').innerHTML)
+                            - parseFloat(document.getElementById('discount').innerHTML)).toFixed(2);
+                      
+                      <p><input type="button" class="buttons" value="Checkout" </p>
+            </p>
+         </div>  
+           
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! METHODS !!!
+
+      ->    Methods take action on objects and their properties
+            A good comparison analogy is this:
+            adjective is to property as verb is to method. 
+            All methods have parentheses at the end (sometimes empty), in case we need to specify what is being taken action on.
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+            // toFixed is a method called to fix the result to two decimal points. It is taking action on the result of a formula.
+            - parseFloat(document.getElementById('discount').innerHTML)).toFixed(2);
+
+
+            // The action being taken in the array with the method unshift is to add Wedge mute to the beginning of the array. 
+            <p><input type="checkbox" title="Wedge mute" id="wedgeMute" onclick="tuningList.unshift('Wedge mute')"; > Wedge mute </p>
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! INSTANTIATION !!!
 
+      ->    A fancy way of saying creation, as in the creation of a new template for an object, otherwise known as a class.
+            An example of this would be for a shirt. A template for a shirt could include its size, color, and sleeve length.
+            From there, you could create multiple shirt objects, each with a different size, color, and sleeve length.
+            Having classes define objects helps ensure consistency among objects. 
+
+      ============
+      CODE EXAMPLE
+      ============
+
+      // *JS FILE
+      const salesTaxRate = .075;
+      incMsg = "This site is under construction and will be fully functional soon.";
+      function product(item, size, price) {
+            this.item = item;
+            this.size = size;
+            this.price = price;
+      }
+
+      // *HTML FILE
+
+      <script>
+            var mandolin = new product ('Mandolin', '36"', 379.99);
+            var drum = new product ('Drum', '32"', 129.99)
+      </script>
+
+      // *CONSOLE / BROWSER
+      // Type one of the objects and one of the properties to get some response:
+
+      mandolin.size
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
-      !!! DATE OBJECT AND TIME !!!
+      !!! DATE AND TIME OBJECT !!!
+
+      -> The example below will build a message that will use todays date, a future date, and display parts of
+         those dates to show when new lessons start. 
+
+     
+      ============
+      CODE EXAMPLE
+      ============
+
+      lessonStartDate = new Date('October 2, 2017 6:00 PM');
+      today = new Date();
+      function getPracticeHours() {
+            try
+            {
+                  var hoursEntered = parseInt(document.getElementById('practiceHours').value);
+                  var msg1 = 'It will take you '
+                  var msg2 = 20 / hoursEntered
+                  var msg3 = ' weeks to finish this program.'
+                  var msg4 = 'Can you do '
+                  var msg5 = hoursEntered
+                  var msg6 = ' per week for '
+                  var msg7 = ' weeks? Or is this just a "dream?"' 
+
+                  document.getElementById('practiceWeeks').innerHTML = 
+                        //put concat here
+                        msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);                        
+            }     
+            catch(error)
+      }
+
+
+      // ** BROWSER'S CONSOLE
+
+      lessonStartDate
+
+      today
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! RETRIEVING DATE PARTS !!!
+
+      -> A key to work with dates is to be able to retrieve parts of a date at any time.
+
+      JavaScript returns most date parts as numbers, which can make trying to display a month name tricky 
+      at first, but not hard.
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+      
+      lessonStartDate = new Date('October 2, 2017 6:00 PM');
+      today = new Date();
+      function getPracticeHours() {
+            try
+            {
+                  var hoursEntered = parseInt(document.getElementById('practiceHours').value);
+                  var msg1 = 'It will take you '
+                  var msg2 = 20 / hoursEntered
+                  var msg3 = ' weeks to finish this program.'
+                  var msg4 = 'Can you do '
+                  var msg5 = hoursEntered
+                  var msg6 = ' per week for '
+                  var msg7 = ' weeks? Or is this just a "dream?"' 
+
+                  document.getElementById('practiceWeeks').innerHTML = 
+                        //put concat here
+                        msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);                        
+                        document.getElementById('practiceDetails').innerHTML = "New classes start on " + lessonStartDate.getMonth() + " " 
+                        + lessonStartDate.getDate() + "."
+            }     
+            catch(error)
+            {
+                  alert("Error: " + error.description);
+            }
+      }
+
+      // JavaScript uses numbers 0 through 11 as month numbers. The example above would print the month of October as 9 then.
+      _______________________________________
+
+      // The best way to convert the number to the actual month is to build and then refer to an array of months:
+
+      
+      lessonStartDate = new Date('October 2, 2017 6:00 PM');
+      today = new Date();
+      var monthName = ["January", "February, "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      function getPracticeHours() {
+            try
+            {
+                  var hoursEntered = parseInt(document.getElementById('practiceHours').value);
+                  var msg1 = 'It will take you '
+                  var msg2 = 20 / hoursEntered
+                  var msg3 = ' weeks to finish this program.'
+                  var msg4 = 'Can you do '
+                  var msg5 = hoursEntered
+                  var msg6 = ' per week for '
+                  var msg7 = ' weeks? Or is this just a "dream?"' 
+
+                  document.getElementById('practiceWeeks').innerHTML = 
+                        //put concat here
+                        msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);           
+                                                                                                      //    wrap the monthName array around the getMonth method of the lessons start date        
+                        document.getElementById('practiceDetails').innerHTML = "New classes start on " + monthName[lessonStartDate.getMonth()] + " " 
+                        + lessonStartDate.getDate() + "."
+            }     
+            catch(error)
+            {
+                  alert("Error: " + error.description);
+            }
+      }
 
 
 ____________________________________________________________________________________________________
@@ -1023,12 +1220,87 @@ ________________________________________________________________________________
 
       !!! LOCALIZATION !!!
 
+      - Date localization uses the toLocaleDateString method to get a date to display in a localized format.
+        
+      ============
+      CODE EXAMPLE
+      ============
 
+      document.getElementById('practiceWeeks').innerHTML = 
+                        //put concat here
+                        msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);           
+                                                                                                      //    wrap the monthName array around the getMonth method of the lessons start date        
+                        document.getElementById('practiceDetails').innerHTML = "New classes start on " 
+                        // + monthName[lessonStartDate.getMonth()] + " " 
+
+                        // gb for Great Britain  to get the dd/mm format for the date. If the method is with empty brackets, then the format will be mm/dd
+                        + lessonStartDate.toLocaleDateString(en-gb) ".";
+                        // + lessonStartDate.getDate() + "."
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! ADD AND SUBTRACT DATES !!!
 
+      -> Adding and subtracting date:
+
+      - To enhance the message that displays when a user enters practice hours for the week in two ways.
+            - First display a date that is eight weeks out (specifically 56 days from the start date).
+            - Then show the number of days between todays date and the start date for the lessons.
+     
+      ============
+      CODE EXAMPLE
+      ============
+
+      <script language="JavaScript">
+            lessonStartDate = new Date('October 2, 2017 6:00 PM');
+            
+            // here was added a variable called lessonEndDate. Initially, it is set, as a date, to the lessonStartDate value
+            var lessonEndDate = new Date(lessonStartDate);
+            
+            // here is used the setDate method on this lessonEndDate to set this to be the current lessonEndDate + 56 days.
+            lessonEndDate.setDate(lessonEndDate.getDate() + 56);
+            
+            today = new Date();
+            
+            // It was added a variable called daysUntilStart and it was set to be an integer of the following: the lessonStartDate minus today
+            var daysUntilStart = parseInt((lessonStartDate - today) / 86400000)  // number of milliseconds.
+            // When we subtract two dates in JS, the difference appears in milliseconds. Needs to take any date subtraction and divide that out by the number of milliseconds to get the number of days.
+
+            var monthName = ["January", "February, "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            function getPracticeHours(){
+                  try
+                  {
+                        var hoursEntered = parseInt(document.getElementById('practiceHours').value);
+                        var msg1 = 'It will take you '
+                        var msg2 = 20 / hoursEntered
+                        var msg3 = ' weeks to finish this program.'
+                        var msg4 = 'Can you do '
+                        var msg5 = hoursEntered
+                        var msg6 = ' per week for '
+                        var msg7 = ' weeks? Or is this just a "dream?"' 
+
+                        document.getElementById('practiceWeeks').innerHTML = 
+                              //put concat here
+                              msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);                                                                                                                 
+                              document.getElementById('practiceDetails').innerHTML = 
+                              "New classes start on " 
+                              + monthName[lessonStartDate.getMonth()] + " " 
+
+                              // below a coma was added and then the number of days until the "start date" 
+                              + lessonStartDate.getDate() + ", "
+                              // here was added the number of days until the start, as part of the message.
+                              + daysUntilStart + " days from now." + 
+                              // and then it was added Lessons end on, and then it was taken the lessonEndDate and converted it to the localeDateString.
+                              "<br /> Lessons end on " + lessonEndDate.toLocaleDateString();
+                            //+ lessonStartDate.toLocaleDateString() + "."
+                  }    
+                  catch(error)
+                  {
+                        alert("Error: " + error.description);
+                  }
+            }
+      </script>
+   
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
@@ -1046,11 +1318,72 @@ ________________________________________________________________________________
 
       !!! RANDOM !!!
 
+      ->    One possibility with JS is that it can be used as a tool to generate some sort of online quiz or game.
+            In this case you may want a random number generator to add the element of surprise to the quiz or game.
+            
+      ============
+      CODE EXAMPLE
+      ============
+
+      <head>
+            ...
+      </head>
+
+      //First when the body loads, the function below runs.
+      <body onload="loadJukebox();">
+            
+      
+            <script>
+
+                  function loadJukeBox() {
+
+                        // the variable videoNumber is set to be the equal to the floor value of a random number *2
+                        // the Math.random function will always return a number between 0 and 1. 
+                        // Then, that number, for this instance, is multiplied by 2, because there are two possible videos
+                        var videoNumber = Math.floor((Math.random() * 2));
+
+                        // The floor function lowers the number of its base integer. 
+                        // For example: if the random generator spit out a number like .7, and then that is multiplied by 2, 
+                        // which equals 1.4, the floor function will reduce that number to the integer of 1.
+                        // In this case the videoNumber can be only 0 or 1.
+
+                        //if it is 0 will play the Blues.mp4, and if it is 1, it will play Happy.mp4 
+                        if (videoNumber == 0) {
+
+                              // in JS, a backslash "\" is an escape character, used when is needed an extra quotation mark or line break or similar character.
+                              // but to get an actual backslash here, the escape character is needed. Otherwise, the source will not have a backslash in between the folder and the file.
+                              document.getElementById('videoJukeBox').src = "videos\\Blues.mp4";
+                        }
+                        else {
+                              document.getElementById('videoJukebox').src = "videos\\Happy.mp4";
+                        }
+                  }
+
+            </script>
+
+      </body>
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! ROUND !!!
+
+      ->    The round number method in JS rounds a number to the nearest whole number. 
+            For example, 3.49 is rounded down to 3, while 3.5 and higher would be rounded up to 4.
+                   
+      ============
+      CODE EXAMPLE
+      ============
+    
+      var hoursEntered = parseInt(document.getElementById('practiceHours').value);
+            var msg1 = 'It will take you '
+            // the Maths.round was applied to the calculation below.
+            var msg2 = Maths.round(20 / hoursEntered)
+            var msg3 = ' weeks to finish this program.'
+            var msg4 = 'Can you do '
+            var msg5 = hoursEntered
+            var msg6 = ' per week for '
+            var msg7 = ' weeks? Or is this just a "dream?"'
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
@@ -1058,24 +1391,77 @@ ________________________________________________________________________________
       !!! ABS !!!
 
 
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
 
       !!! FLOOR AND CEILING !!!
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! MIN AND MAX !!!
+
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! POW !!!
 
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! SQRT !!!
+
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
@@ -1095,10 +1481,30 @@ ________________________________________________________________________________
       !!! REUSABLE CODE !!!
 
 
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! LOCAL VS. GLOBAL SCOPE !!!
+
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
 
 
 ____________________________________________________________________________________________________
@@ -1107,16 +1513,43 @@ ________________________________________________________________________________
       !!! REDEFINING VARIABLES !!!
 
 
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! PASSING PARAMETERS !!!
 
 
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! VALUE VS. REFERENCE !!!
+
+
+
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
       
 
 ____________________________________________________________________________________________________
@@ -1125,16 +1558,48 @@ ________________________________________________________________________________
       !!! RETURN VALUES 1 !!!
 
 
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! RETURN VALUES 2 !!!
 
 
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
+
+
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! DOMAIN 2 EXAM TIPS !!!
+
+
+
+
+
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+
 
 
 ____________________________________________________________________________________________________
