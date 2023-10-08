@@ -1390,6 +1390,8 @@ ________________________________________________________________________________
 
       !!! ABS !!!
 
+      ->    In Maths, the absolute vale of a number is the number itself, regardless of whether it is positive or negative.
+            Sometimes, it is needed a number to show its absolute value. The Math.abs method in JS will make a number represent its absolute value.
 
 
       
@@ -1397,7 +1399,15 @@ ________________________________________________________________________________
       CODE EXAMPLE
       ============
 
-
+      // The Math.abs method wraps around the hoursEntered variable. It will take what the user entered, parse it as an integer, and then get its absolute value. 
+      var hoursEntered = Math.abs(parseInt(document.getElementById('practiceHours').value))
+            var msg1 = 'It will take you '
+            var msg2 = Math.round(20 / hoursEntered)
+            var msg3 = ' weeks to finish this program.'
+            var msg4 = 'Can you do '
+            var msg5 = hoursEntered
+            var msg6 = ' per week for '
+            var msg7 = ' weeks? Or is this just a "dream?"'
 
 
 
@@ -1407,59 +1417,131 @@ ________________________________________________________________________________
 
       !!! FLOOR AND CEILING !!!
 
-
-
-      
+      ->    Whereas the round method rounds up or down a number based on hat is after a decimal point, 
+            you may want to trim a number to its lower or higher value, no matter what is after the decimal point.
+            
+            To move numbers to their lower whole number (2.3 or 2.7 to 2), it is used the floor method.
+            Floor method is used to change numbers to the nearest lower whole number.
+            
+            To move a number up to its next whole number, (2.3 or 2.7 to 3), it is used the ceiling method.
+            Ceiling method is used to change numbers to the nearest higher whole number.
+                
       ============
       CODE EXAMPLE
       ============
 
-
-
+            var hoursEntered = Math.abs(parseInt(document.getElementById('practiceHours').value))
+            var msg1 = 'It will take you '
+            // Math.ceil will move the number up. Math.floor will move the number down.
+            var msg2 = Math.ceil(20 / hoursEntered)
+            var msg3 = ' weeks to finish this program.'
+            var msg4 = 'Can you do '
+            var msg5 = hoursEntered
+            var msg6 = ' per week for '
+            var msg7 = ' weeks? Or is this just a "dream?"'
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! MIN AND MAX !!!
 
-
-
-
-      
+      -> Just like the case with a program like Microsoft Excel, min and max functions in JavaScript retrieve minimum and maximum numbers from a range of numbers.
+            
       ============
       CODE EXAMPLE
       ============
 
+      <script>
+      
+            var manPrice = parseFloat(document.getElementById('manPrice').innerHTML);
+            var drumPrice = parseFloat(document.getElementById('drumPrice').innerHTML);
+            var tromprice = parseFloat(document.getElementById('tromPrice').innerHTML);
 
+            function showMinMax() {
+                  // minPrice is a variable that uses the Math.min method to get the minimum among the prices of the instruments for sale, which are stored in variables above.
+                  // The actual information comes from three named elements in the HTML file: manPrice, drumPrice, and tromPrice                  
+                  var minPrice = Math.min(manPrice, drumPrice, tromPrice);
 
+                  // maxPrice is present, and in it, the Math.max method obtains the highest value from these three item prices.
+                  var maxPrice = Math.max(manPrice, drumPrice, tromPrice);
+
+                  // Then, a message is written to an HTML element called minmax, showing the lowest price and then what it is, and the highest price and what that is.
+                  document.getElementById('minmax').innerHTML = 'The lowest price is ' + minPrice
+                        + ' and the highest price is '+ maxPrice;
+            }
+
+      </script>
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! POW !!!
 
-
-
-      
+      -> The Math.pow method in JS takes a number and raises it to the power specified.
+         For example, Math.pow(2,3) takes the number 2 and raises it to the third power, which is 2 x 2 x 2 = 8.
+               
       ============
       CODE EXAMPLE
       ============
 
+            <p id="sqftneeded"></p>
+            <p id="sqftremaining"></p>
+            <p>Need to know some square footage calculations?
+            Enter a side length and click square footage to get the total area.
+            Or, enter an area and click side to get a side length.</p>
+            <p><input id="toMeasure" />
 
+                  // When the button below is clicked, it will run the function called getSquareFootage.
+                  <button class="buttons" value="square footage" id="squareFootage" onclick="getSquareFootage();"> Square Footage </button>
 
+                  <button class="buttons" value="side" id="squareFootage" onclick="getSide();"> Side </button>
+            </p>
+            <p id="toMeasureResult"></p>
+
+            ...
+
+            <script>
+
+                  // the function below takes what the users entered, and using the Math.pow method, raises it to the power of 2, which will then get the square footage of the area.
+                  function getSquareFootage() {
+                        document.getElementById('toMeasureResult').innerHTML = 
+                              // this message is then placed in the HTML for the toMeasureResult element, which a paragraph element showed above.
+                              'Square Feet: ' + Math.pow(parseInt(document.getElementById('toMeasure').value), 2);
+                  }
+                  function getSide() {
+                        document.getElementById('toMeasureResult').innerHTML =
+                              'Side length: ' + Math.sqrt(parseInt(document.getElementById('toMeasure').value));
+                  }
+            </script>
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! SQRT !!!
 
-
-
-
-      
+      -> The Math.sqrt method takes a number and calculates its square root.
+      The next example is a practical use of it as it will use this square root to take an area someone enters and calculate the length of a side in the room.
+            
       ============
       CODE EXAMPLE
       ============
+      
+      <p><input id="toMeasure" />                
+            <button class="buttons" value="square footage" id="squareFootage" onclick="getSquareFootage();"> Square Footage </button>
+
+            // The side button, when clicked, runs the getSide function.
+            <button class="buttons" value="side" id="squareFootage" onclick="getSide();"> Side </button>
+      </p>
+      <p id="toMeasureResult"></p>
+
+      ...
+      
+      // This takes what was entered in the input field, parses it as an integer, and then uses the Math.sqrt method to calculate the square root of the number.
+      function getSide() {
+                        document.getElementById('toMeasureResult').innerHTML =
+                              // This result is then placed in the HTML of a paragraph element with the ID of toMeasureResult.
+                              'Side length: ' + Math.sqrt(parseInt(document.getElementById('toMeasure').value));
+                  }
 
 
 
@@ -1480,31 +1562,59 @@ ________________________________________________________________________________
 
       !!! REUSABLE CODE !!!
 
-
-
-
-
-      
+      The biggest reason to use functions, is to create reusable code.
+           
       ============
       CODE EXAMPLE
       ============
 
+      // The code below will get the existing quantity of a field, store it, increment it, and then return that increment value to the field.
+      function addOne(fieldQty) {
+            var qty = document.getElementById(fieldQty).value;
+            qty++;
+            document.getElementById(fieldQty).value = qty;
+      }
 
+      function addFive(qty) {
+            var newQty += parseInt(document.getElementById(qty).value);
+            newQty += 5;
+            document.getElementById(qty).value = newQty;
+      }
 
+      function checkoutWindow() {
+            checkWin = window.open("checkout.html", "", "width=300, height=300");
+      }
+      function closeCheckout() {
+            checkWin.close();
+      }
+
+      ______
+
+      HTML:
+
+      <button id="manqtyadd" onclick="addOne('manqty');"
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! LOCAL VS. GLOBAL SCOPE !!!
 
+      ->    One important concept that is needed to understand about variables is variable scope.
+            Scope defines the depth to where a variable can be used in a file.
+            
+            Two factors determine scope: where the variable is declared, and wether it is being explicitly declared, meaning whether the var keyword is being used.
 
+            - Variables declared outside of functions or without the var keyword are considered global.
+                  Otherwise it is considered local.
 
-
+            The best way to test variable scope is to use the console. You can type the variable name and press enter, 
+            if the console shows as "undefined", the variable is local and can't be accessed at any time.
+            
+            Global variables are available any time, local variables only within their functions. 
       
       ============
       CODE EXAMPLE
       ============
-
 
 
 ____________________________________________________________________________________________________
@@ -1512,13 +1622,19 @@ ________________________________________________________________________________
 
       !!! REDEFINING VARIABLES !!!
 
+      -> The concept of redefining variables in JS is simply the idea of changing a variable after it has been defined, 
+      that is, after something has been assigned to it.
 
-
+      Most variables can be redefined.
+      Constants cannot be redefined. Attempting to do so will cause an error.
       
       ============
       CODE EXAMPLE
       ============
 
+      var lessonEndDate = new Date(lessonStartDate);
+      // below lessonEndDate is being redefined
+      lessonEndDate.setDate(lessonEndDate.getDate() + 56);
 
 
 ____________________________________________________________________________________________________
@@ -1526,73 +1642,153 @@ ________________________________________________________________________________
 
       !!! PASSING PARAMETERS !!!
 
+      -> Some functions use parameters, which basically define the what as the object a function is affecting.
 
+      - The idea of passing a parameter through is what allows the function to be used in multiple places.
       
       ============
       CODE EXAMPLE
       ============
 
+      // It calls the addFive function and passes through the manqty element as a parameter.
+      <button id="manqtyfive" onclick="addFive(manqty);">Add Five</button>    // ** This manqty... **
+
+      ...
 
 
+      //
+      function addFive(qty) {                                                 // ** ... is going to pass through this qty variable ...
+            var newQty += parseInt(document.getElementById(qty).value);       // ** ... be parsed ad an integer, ...
+            newQty += 5;                                                      // ** ... have five added to it, ...
+            document.getElementById(qty).value = newQty;                      // ** ... and then the element will be assigned the new value (5 more that it was before)
+      }
+
+      ________________
+
+      // Now a function that does not use parameters:
+
+      // This function does not have a parameter, there's nothing in the parentheses. The reason, there is no existing object that is affected here.
+      function checkoutWindow() {
+            checkWin = window.open("checkout.html", "", "width=300, height=300");  // This function creates a new object, a new window, so no parameter is needed.
+      }
+
+      ________________
+
+      Bottom line is:
+
+      Is the function going to affect an existing object?
+      If so, you probably need a parameter. If not, you probably do not need a parameter.
+      
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! VALUE VS. REFERENCE !!!
 
+      Primitive data types: numbers, Boolean, string, null, and undefined.
 
+      Objects: mainly arrays.
 
+      When making one variable or object equal another, what happens when the original is changed?
 
-
-
+      It is needed to be careful with objects (especially arrays), because sometimes, setting one array to be equal to another one, 
+      and then changing that array, will change both arrays. 
+      Because often arrays share a memory space. For objects it is better to set each object to have its own values.
       
       ============
       CODE EXAMPLE
-      ============
-
-
-      
+      ============     
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! RETURN VALUES 1 !!!
 
-
-
-
+      -> When a function does a calculation, sometimes the result is used right away in an HTML element, or a form, or other calculation.
+      Sometimes the function result is saved for a later use. In that case the return keyword is used.
       
       ============
       CODE EXAMPLE
       ============
 
+      function getPracticeHours(){
+            try
+            {
+                  var hoursEntered = Math.abs(parseInt(document.getElementById('practiceHours').value))
+                  var msg1 = 'It will take you '
+                  var msg2 = Math.ceil(20 / hoursEntered)
+                  var msg3 = ' weeks to finish this program.'
+                  var msg4 = 'Can you do '
+                  var msg5 = hoursEntered
+                  var msg6 = ' per week for '
+                  var msg7 = ' weeks? Or is this just a "dream?"' 
 
+                  document.getElementById('practiceWeeks').innerHTML = 
+                        //put concat here
+                        msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);                                                                                                                 
+                  document.getElementById('practiceDetails').innerHTML = "New classes start on " 
+                        + monthName[lessonStartDate.getMonth()] + " " + lessonStartDate.getDate() + ", "
+                        + daysUntilStart + " days from now." +                         
+                        "<br /> Lessons end on " + lessonEndDate.toLocaleDateString();
+                        
+                  // this is to get the month name, for the current month, for today to display in an alert.
+                  return alert(monthName[today.getMonth()])
+
+                  }    
+                  catch(error)
+                  {
+                        alert("Error: " + error.description);
+                  }
+            }
 
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
-
-      !!! RETURN VALUES 2 !!!
-
-
-
-
 
       
-      ============
-      CODE EXAMPLE
-      ============
-
-
-
-
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! DOMAIN 2 EXAM TIPS !!!
 
+            >>>    What is the difference between a declared variable or array and an initialized variable or array?
+                  - A declared array becomes initialized when it starts to hold values. Otherwise, it is just declared, same for variables.
 
+            >>>   Where does the unshift method add an item to in an array?
+                  - Unshift is the opposite of push, which adds an item to the end of an array.
 
+            >>>   What bit of code makes a method a method?
+                  - Parentheses at the end of each method.
 
+            >>>   What type of variable cannot be redefined?
+                  - A constant
+
+            *** Remember that JavaScript is a loosely typed language.
+            
+            *** Know the main primitive data types: numbers, Boolean, string, null, and undefined. >>> Objects: mainly arrays.
+
+            *** Be able to use typeof operator to return a data type.
+
+            *** Know how to use conversion methods such as parseInt and parseFloat to turn text into numbers.
+
+            *** Know when to nest quotes, which is basically a need when you have something requiring a quotation marks inside of something that already has quotation marks.
+
+            *** Know how to build  arrays and how to manipulate them using methods: PUSH, POP, SHIFT, AND UNSHIFT.
+
+            *** Be able to look at a piece of JavaScript code and determine what is the object, what are properties, and what are methods.
+
+            *** Know how to generate a date variable for a fixed date or today's date.
+
+            *** Be able to break that date up into parts and know how to add a number to a date and how to subtract two dates.
+
+            *** Know how to use the built-in Math functions, such as random, round, abs, floor, ceiling, min, max, por, ans sqrt (square root).
+
+            *** Know that the main purpose of a function is to be able to reuse code.
+
+            *** Make sure you can tell a local variable from a global one.
+
+            *** Know the role of parameters in functions.
+
+      
 
       
       ============
