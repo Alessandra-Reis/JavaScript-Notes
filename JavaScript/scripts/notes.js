@@ -1903,123 +1903,192 @@ ________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 
-      !!! EQUALS 1 !!!
+      !!! EVALUATION EXPRESSIONS !!!
 
+           -  ASSIGNMENT (the equal sign) and a group of operators which performed basic math calculations:
+
+                  =, +, -, *, /
+
+            - EVALUATION EXPRESSIONS, which compare two parts, usually an object and a value, and return a true or false value:
+
+            ==
+            !=
+            <>
+            <=
+            !
+            &&
+            ||
+
+                  >> Notice that most of these evaluation expressions have two characters.
+                  This is a good mental note for separating evaluation expressions from ones that perform operations.
+
+
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! EQUALS !!!
+
+      ==
+
+      -> The double EQUAL sign is an evaluation expression that means: "Is it equal to that?"      
+      -  Usually, this will be used with an if statement.
+            
+      ============
+      CODE EXAMPLE
+      ============  
       
-            
-      ============
-      CODE EXAMPLE
-      ============     
+      // On the line below, the single equal sign literally means set the variable of checkOutExists to be equal to false.
+      checkOutExists = false;
+
+      // The line below with the double equal sign is asking the question: Is the variable checkOutExists equal to false?
+      if(checkOutExists == false)
  
-____________________________________________________________________________________________________
-____________________________________________________________________________________________________
-
-      !!! EQUALS 2 !!!
-
-
-            
-      ============
-      CODE EXAMPLE
-      ============     
- 
-____________________________________________________________________________________________________
-____________________________________________________________________________________________________
-
-      !!! EQUALS 3 !!!
-
-
-
-            
-      ============
-      CODE EXAMPLE
-      ============     
- 
-
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
       
       !!! NO EQUALS !!!
 
+      !=
 
-
+      -> This symbol represents that something is not equal to a value, or asking if it is not equal to a value.
             
       ============
       CODE EXAMPLE
-      ============     
+      ============  
+      
+      // The code below is literally asking 'is the variable checkOutExists not equal to true?'
+      if (checkOutExists != true)
  
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! GREATER THAN AND LESS THAN !!!
-
-
-
-
+                       
+      - The greater > and less < than symbols.
             
       ============
       CODE EXAMPLE
       ============     
  
+            // it checks to see if one entered fewer than three hours a week for practice. If they did, an extra message will appear.
+            if (hoursEntered < 3) {
+                  document.getElementById('practiceDetails').innerHTML += 
+                  "<br /> You really should practice at least three hours a week to best retain what you learn"
+            }
+
+            // it checks to see if one entered greater than eight hours a week for practice. If they did, another message will appear.
+            if (hoursEntered > 8) {
+                  document.getElementById('practiceDetails').innerHTML += 
+                  "<br /> More than 8 hours a week for a beginner may be too many hours."
+            }
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! LESS THAN OR EQUAL TO !!!
 
-
-
+      - Less than or equal to symbol: <=
             
       ============
       CODE EXAMPLE
       ============     
  
-
+      // it checks to see if one entered fewer than or equal to three hours a week for practice. If they did, an extra message will appear.
+      if (hoursEntered <= 3) {
+                  document.getElementById('practiceDetails').innerHTML += 
+                  "<br /> Three hours is just enough practice a week. Anything less and you may not retain skills."
+            }
+        
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! GREATER THAN OR EQUAL TO !!!
 
-
-
-
-
+      - Greater than or equal to symbol: =>
             
       ============
       CODE EXAMPLE
       ============     
  
-
+             
+      // it checks to see if one entered greater than or equal to eight hours a week for practice. If they did, another message will appear.
+      if (hoursEntered => 8) {
+            document.getElementById('practiceDetails').innerHTML += 
+            "<br /> Eight or more hours a week for a beginner may be too many hours."
+      }
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! NOT !!!
 
-
-
-
+      -> The exclamation point is the "NOT" and it can be used in other places besides before and after an equal sign.
+      -  It is specially useful for evaluating Boolean situations.
             
       ============
       CODE EXAMPLE
-      ============     
- 
-
+      ============   
+      
+      // It will check to see if the variable called checkOutExists is not true. Is a shorten version for: (variableName != true)
+      if(!checkOutExists)
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! AND !!!
 
+      &&       
 
+      -> To look at evaluating multiple expressions at once.
+            - One of two symbols are needed in this situation:
+              an 'and' symbol &&
+              or an 'or' symbol ||
 
-            
+                  
       ============
       CODE EXAMPLE
-      ============     
+      ============   
+      
+      // The line below is evaluating two expressions: that the wedgeMute bos is checked AND  that pappsMute is checked. If so, a message will appear.
+      if (document.getElementById('wedgeMute').checked && document.getElementById('pappsMute').checked){
+            document.getElementById('tuningList').innerHTML = "You Selected both mutes.";
+      }
+      else {
+            document.getElementById('tuningList').innerHTML = " ";
+      }
+
+      // Both conditions should be true for the AND evaluator to return true.
  
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
 
+!!! OR !!!
 
+      ||       
 
+      -> When evaluating two expressions, sometimes is only needed one of the expressions to be true 
+            in order to take further action.
+
+            - For this it is needed an OR operator: || (two vertical pipes), to evaluate the two expressions instead of an AND operator. 
+                  
+      ============
+      CODE EXAMPLE
+      ============   
+      
+      // The line below is evaluating two expressions: that the wedgeMute OR that pappsMute is checked. If so, a message will appear.
+      if (document.getElementById('wedgeMute').checked || document.getElementById('pappsMute').checked){
+            document.getElementById('tuningList').innerHTML = "You Selected one or more mutes.";
+      }
+      else {
+            document.getElementById('tuningList').innerHTML = " ";
+      }
+
+      // One or both of those conditions should be true for the OR evaluator to return true.
+ 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
@@ -2033,71 +2102,147 @@ ________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
 
-      !!! IF 1 !!!
+      !!! IF !!!
 
+      -> It checks a condition to see if it is true or if it is false and then take action based on the result.
 
+      CONDITION: If I hear a song I like
+      ACTION: I will keep listening
 
+      ** Pay special attention to the syntax
+
+      The CONDITION for an IF statement is always inside of parentheses.
+      The ACTION takes places inside of curly brackets.
             
       ============
       CODE EXAMPLE
-      ============     
- 
-
-
-____________________________________________________________________________________________________
-____________________________________________________________________________________________________
-
-      !!! IF 2 !!!
-
-
-
+      ============   
             
-      ============
-      CODE EXAMPLE
-      ============     
- 
-
-
+      function openCheckOut() {
+            // The CONDITION is asking if checkOutExists is not equal to true, or if doesn't exists.
+            if(!checkOutExists) 
+            // The action is to create a new window, and changing this variable.
+            {
+                  checkWin = window.open("checkout.html", "", "width=300, height=300");
+                  // the checkOutExists will be set to be equal to true now.
+                  checkOutExists = true;
+            }
+      }
+       
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! ELSE IF !!!
 
+      -> When using the if keyword to see if a situation is true, you may want to check for another situation in case the first situation is false.
 
+      CONDITION 1 (IF): If it is sunny outside,
+      ACTION 1: I will go ride my bike; 
+      (or ELSE IF) CONDITION 2: If it is not snowing, 
+      ACTION 2: I will go run errands.
+      (or anything ELSE) ACTION 3: I will stay home.  
 
+            -That case it will check the first condition if it is true, if it is false, it checks the second condition. 
+             If neither condition is true, it goes with the else condition.
             
       ============
       CODE EXAMPLE
-      ============     
- 
+      ============  
 
+      
+      // This is going to indicate that both mutes have been checked.
+      if (document.getElementById('wedgeMute').checked && document.getElementById('pappsMute').checked){
+            document.getElementById('tuningList').innerHTML = "You selected both or more mutes.";
+      }
 
+      // This is going to indicate if one or more mutes have been checked.
+      else if (document.getElementById('wedgeMute').checked || document.getElementById('pappsMute').checked){
+            document.getElementById('tuningList').innerHTML = "You selected one or more mutes.";
+      }
+
+      // This is not going to indicate anything.
+      else {
+            document.getElementById('tuningList').innerHTML = " ";
+      }
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
       
       !!! SWITCH !!!
 
+      -> When checking a condition, you may have multiple possibilities, each requiring a different action.
+            For these situations, you would not necessarily want a bunch of separate if statements or if, else if, else if ....
 
-
+            In this case, we should use the switch keyword in JavaScript.
+            
+            Unlike an IF statement, a SWITCH statement will not stop checking a condition after a first match.
+            So we have to tell it to stop and we do that with a break statement.
             
       ============
       CODE EXAMPLE
-      ============     
- 
+      ============  
+      
+      <p id="specialDiscount">&nbsp;</p>
+
+      ...
+      
+      function showSpecialDiscount() {
+            var today = new Date();
+            var msg = document.getElementById('specialDiscount');
+            
+            // Here is a switch statement with the date of today's date in parentheses. This value is going to be checked against multiple conditions.
+            switch (today.getDate()) {
+
+                  // Each condition is represented with a case statement. Below for each case/day there's a different message.
+                  case 1:
+                  msg.innerHTML = 'First day of the month. 10% off of all orders today when you call us and mention this!';
+
+                  // After each case a brake statement is needed to tell JavaScript to exit the switch statement if we get a match. 
+                  break;
+
+                  case 7:
+                  msg.innerHTML = 'Today is the lucky 7th. 7% off of all orders today when you call us and mention this!';
+                  break;
+
+                  case 15:
+                  msg.innerHTML = "It's the hump day of the month. 15% off of all orders today when you call us and mention this.!";
+                  break;
+
+                  // The default condition means that if no cases are true, do this.
+                  default:
+                  msg.innerHTML = 'Keep checking back for specials.'
+            }
+      } 
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! NESTED IF !!!
 
-
+      -> This is an if inside of an if statement.
 
             
       ============
       CODE EXAMPLE
       ============     
  
+      if (document.getElementById('wedgeMute').checked && document.getElementById('pappsMute').checked){
+            document.getElementById('tuningList').innerHTML = "You selected both or more mutes.";
+      }
+
+      else if (document.getElementById('wedgeMute').checked || document.getElementById('pappsMute').checked){
+            //The message will now be different for each condition
+            if(document.getElementById('wedgeMute').checked) {
+                  document.getElementById('tuningList').innerHTML = "You selected the wedge mute."
+            }
+            else{
+                  document.getElementById('tuningList').innerHTML = "You selected the papps mute."
+            }
+      }
+
+      else {
+            document.getElementById('tuningList').innerHTML = " ";
+      }
 
 
 
@@ -2117,13 +2262,55 @@ ________________________________________________________________________________
 
       !!! FOR !!!
 
-
+      -> Loops run the code either a set number of times or a conditional number of times.
             
+      -> The FOR LOOP runs a set number of times, either set by us or set by a value, 
+            such as the number of an element on a page or the length of an array. 
+         
+            - In the parentheses for a FOR LOOP we have three arguments: 
+              . a starting point, 
+              . the point in witch the loop will stop, 
+              . and the number to increase or decrease each time we go through the loop.
+
       ============
       CODE EXAMPLE
       ============     
  
+      <script>
+     tuningList = ["Tuning Lever", "Tuning Fork"];
+     fieldTotals = [];
+     function updateList() {      
+         document.getElementById('tuningList').innerHTML = "<ul>";
 
+         // The purpose for this particular loop is to list all of the items in an array. 
+         // Arrays are zero-based, meaning the first element has a designation of 0.
+         // Thus the loop below starts at 0, this number is stored in a variable (i). 
+         // The second part, which determines how long this loop will run, is the length of the array being iterated through.
+         // The third part indicates that each time we loop through this code, one will be added to the counter through the increment symbol: ++.
+         for (var i = 0; i < tuningList.length; i++) {
+
+            // A list item for each array item, as used in the counter, will be created
+             document.getElementById('tuningList').innerHTML +=
+                 "<li>" + tuningList[i] + "</li>"
+         }
+
+         document.getElementById('tuningList').innerHTML += "</ul>";
+         document.getElementById('tuningList').innerHTML +=
+             "<br /> A tuning lever and tuning fork is a must-have for any tuning kit."
+     }
+
+     function toggleSelection(item) {
+         if (document.getElementById(item).checked)
+         {
+             tuningList.push(document.getElementById(item).title);
+         }
+         else
+         {
+             tuningList.splice(tuningList.indexOf(document.getElementById(item).title));
+         }
+     }
+
+ </script>
 
 
 ____________________________________________________________________________________________________
@@ -2131,28 +2318,74 @@ ________________________________________________________________________________
 
       !!! WHILE !!!
 
+      -> The WHILE LOOP is defined as this:
+            While this condition is true, run this code.
 
-
+            With a shuttle bus example:
+            With the bus going through an airport loop, with the condition being while there are people to pick up, run the loop
             
       ============
       CODE EXAMPLE
-      ============     
- 
+      ============   
+            
+      function lessonSchedule() {
+            var lessonStartDate = new Date('October 2, 2017 06:00:00 PM');
+            var lessonEndDate = new Date(lessonStartDate);
+            var detailsSchedule = document.getElementById('lessonSchedule')
+            // if we change 56 to 21, it will then show 3 dates (3 weeks) on the while loop
+            lessonEndDate.setDate(lessonEndDate.getDate() + 56);
 
+            detailsSchedule.innerHTML += "<br /> First lesson: "
+            + lessonStartDate.toLocaleDateString() + "<br />Subsequent lessons: ";
+                
+            // The while condition below will run through and displays a new date, seven days after the previous date,
+            // as long as the lessonStartDate is less than the lessonEndDate.  
 
+            // The while condition, which is in parentheses, looks to run the code while lessonStartDate is less than the lessonEndDate.              
+            while (lessonStartDate < lessonEndDate) {
+                  // the code will add seven days to the lessonStartDate, and then displays that date on a separate line.
+                  lessonStartDate.setDate(lessonStartDate.getDate() + 7);
+                  detailsSchedule.innerHTML += "<br />" + lessonStartDate.toLocaleDateString();
+            }
+                    
+      } 
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
       !!! DO !!!
 
-
+      - DO LOOP is similar to the while loop but with the major difference.
+            The DO LOOP will always run at least once.
+            
+            A DO LOOP runs once and then checks the condition. 
+            
+            The while loop by itself checks a condition before it runs. If that condition is false, loop never runs.
             
       ============
       CODE EXAMPLE
       ============     
  
+      function lessonSchedule() {
+            var lessonStartDate = new Date('October 2, 2017 06:00:00 PM');
+            var lessonEndDate = new Date(lessonStartDate);
+            var detailsSchedule = document.getElementById('lessonSchedule')
+            lessonEndDate.setDate(lessonEndDate.getDate() + 56);
 
+            detailsSchedule.innerHTML += "<br /> First lesson: "
+                  + lessonStartDate.toLocaleDateString() + "<br />Subsequent lessons: ";
+                
+
+            // The code below is basically saying: do this and then check the condition.
+            // So the loop will always run at least once.
+            do {
+                  lessonStartDate.setDate(lessonStartDate.getDate() + 7);
+                  detailsSchedule.innerHTML += "<br />" + lessonStartDate.toLocaleDateString();
+            }
+
+            while (lessonStartDate < lessonEndDate)
+
+      }
 
 
 
@@ -2164,65 +2397,112 @@ ________________________________________________________________________________
 
       !!! BREAK !!!
 
-
-
-
-            
-      ============
-      CODE EXAMPLE
-      ============     
- 
-
-
-____________________________________________________________________________________________________
-____________________________________________________________________________________________________
-
-      !!! CONTINUE 1 !!!
-
-      
+      -> Sometimes within a loop, we need to break a code. 
+            For example, you may want to make sure that no matter what dates you ser for weekly meeting, 
+            those meetings do not happen during the holiday season.
 
             
       ============
       CODE EXAMPLE
       ============     
  
+      function lessonSchedule() {
+            var lessonStartDate = new Date('October 2, 2017 06:00:00 PM');
+            var lessonEndDate = new Date(lessonStartDate);
+            var detailsSchedule = document.getElementById('lessonSchedule')
+            lessonEndDate.setDate(lessonEndDate.getDate() + 56);
+            var breakDate = new Date('November 20, 2017 12:00:00 AM');
 
+            detailsSchedule.innerHTML += "<br /> First lesson: "
+                  + lessonStartDate.toLocaleDateString() + "<br />Subsequent lessons: ";
+                
 
+            do {
+                  // It will check if the lessonStartDate is equal to breakDate
+                  if (lessonStartDate.getDate() == breakDate.getDate())
+                  {
+                        // if it is true, we can break this code and stop running this loop.
+                        break;
+                  }
+
+                  lessonStartDate.setDate(lessonStartDate.getDate() + 7);
+                  detailsSchedule.innerHTML += "<br />" + lessonStartDate.toLocaleDateString();
+            }
+            while (lessonStartDate < lessonEndDate)
+
+                    
+      }
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
-      !!! CONTINUE 2 !!!
+      !!! CONTINUE !!!
 
-
-
-            
+      - Whereas the break keyword stops a loop based on a condition, 
+        the CONTINUE keyword skips one iteration of a loop based on a condition.
+                  
       ============
       CODE EXAMPLE
       ============     
  
+       function lessonSchedule() {
+            var lessonStartDate = new Date('October 2, 2017 06:00:00 PM');
+            var lessonEndDate = new Date(lessonStartDate);
+            var detailsSchedule = document.getElementById('lessonSchedule')
+            lessonEndDate.setDate(lessonEndDate.getDate() + 56);
+            var breakDate = new Date('November 20, 2017 12:00:00 AM');
 
+            detailsSchedule.innerHTML += "<br /> First lesson: "
+                  + lessonStartDate.toLocaleDateString() + "<br />Subsequent lessons: ";
+                
 
+            do {         
+                  // The date will move up seven days before it checks to see if it reaches the break date (the date that can't be displayed).
+                  
+                  // The addition takes place to get the new start date
+                  lessonStartDate.setDate(lessonStartDate.getDate() + 7);
+                  
+                  // Then if that start date equals to the break date ...
+                  if (lessonStartDate.getDate() == breakDate.getDate())
+                  {               
+                        // ... will continue this and skip over that date.          
+                        continue;
+                  }
+
+                  detailsSchedule.innerHTML += "<br />" + lessonStartDate.toLocaleDateString();
+            }
+            while (lessonStartDate < lessonEndDate)
+                    
+      }
 
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 
+     
       !!! EXAM TIPS !!!
 
+      - Know the difference between the do loop and the while loop
+            > The DO LOOP always runs once before it checks a while condition.
+            > In a WHILE LOOP the condition is checked first.
 
+      - Make sure you avoid creating an endless loop
 
+      - Logical and comparison operators have 2 symbols
 
+      - Be able to construct if, else if, switch, and nested if statements.
+            > Remember that the condition an if statement checks goes inside of parentheses while the resulting action 
+              if the condition is true goes inside curly brackets.
 
-            
-      ============
-      CODE EXAMPLE
-      ============     
+            > Know when you would use a switch or nested if
 
+      - Know how to use a FOR LOOP, when to use a conditional loop (while or do), and know when to use a break or continue statement.
+   
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
  
+
 
 
 
