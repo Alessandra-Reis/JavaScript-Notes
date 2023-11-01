@@ -2501,7 +2501,738 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+
+    ********************************
+    DOMAIN 4 - DOCUMENT OBJECT MODEL
+    ********************************
+    
+    >>> DOM <<< 
+
+      - Help to get an understanding of this model.
+      - How objects on a webpage relate to each other.
+      - How we this can be used to learn about objects and their properties.
+
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                                      --------
+                                                      DOM TREE
+                                                      -------- 
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! WINDOW !!!
+  
+      -> The document objects (  DOM - DOCUMENT OBJECT MODEL ) that we interact with mostly in JS are HTML tags.
+            If any text or image, for example, is going to be changed due to a mouse click or other interaction, 
+            we need to know which HTML tags we are changing.
+           
+      FIRST OBJECT: 
+      
+      WINDOW > Properties: URL, name, and specs 
+
+      A DOM always starts with a window object.
+                   
+      ============
+      CODE EXAMPLE
+      ============    
+      
+      // this function opens a new window
+      function checkoutWindow() {   
+            // within the open method there are some arguments: url, "", window width and height and no status bar... 
+            // these are some of several attributes that can be set for the window object
+            checkWin = window.open("checkout.htm", "", "width=300, height=300", "status=no");          
+      }
  
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! DOCUMENT !!!
+
+      -> Every HTML element and every attribute descends from this document object.
+
+      Given that HTML is the first tag under the document object, we add that to our Document.
+
+      ============
+      CODE EXAMPLE
+      ============  
+
+      ________________________________
+      |                              |          
+      |           WINDOW             |
+      |         Properties           |
+      |     URL, name, and specs     |
+      |______________________________|
+      _______________|________________
+      |                              |
+      |          DOCUMENT            |
+      |______________________________|
+      _______________|________________
+      |                              |
+      |        <html> element        |
+      |______________________________|
+      
+      
+      // What first document elements are in this document:
+
+      <HTML> is the first tag, the first element we see within the document 
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! BODY !!!
+
+      -> <head> and <body> 
+
+      When building pages within a website, is good to have some diagrams as the one below to see clearly 
+      how the webpages flow and objects flow through the web application.
+
+      After HEAD and BODY objects, DOMs will look different from document to document as elements within the body tag will vary.
+            
+      *Any property can be manipulated through JavaScript.
+
+      ============
+      CODE EXAMPLE
+      ============  
+      
+                                                ________________________________
+                                                |                              |          
+                                                |           WINDOW             |
+                                                |         Properties           |
+                                                |     URL, name, and specs     |
+                                                |______________________________|
+                                                _______________|________________
+                                                |                              |
+                                                |          DOCUMENT            |
+                                                |______________________________|
+                                                _______________|________________
+                                                |                              |
+                                   _____________|        <html> element        |_____________
+                                  |             |______________________________|             |
+            ______________________|_________                                            _____|__________________________
+            |                              |                                            |                              | 
+            |             HEAD             |                                            |             BODY             |
+            |______________________________|                                            |______________________________|
+      _____________________|_____________________                                                          _______|_______
+______|_____         ______|______         ______|__________________________________                       |             |               
+|          |         |           |         |                                       |                       |  <section   |
+|  <meta>  |         |  <title>  |         |                <link>                 |                       |  id="main"> |
+|__________|         |___________|         |          href="styles\style.css"      |                       |_____________|
+                                           |_______________________________________|                   ___________|___________  
+                                                                                                       |                     |
+                                                                                                       |      <section       |
+                                                                                                       |  id="main_content"  |
+                                                                                                       |_____________________|
+                                                                                                        __________|___________
+                                                                                                        |                    |
+                                                                                                        |      <header>      |
+                                                                                                        |____________________|
+
+
+
+                                                                                                        ___________________________________________________________________________________________________
+____________________________________________________________________________________________________
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                          -----------
+                                          HTML EVENTS
+                                          ----------- 
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! ONCHANGE !!!
+
+      -> Object properties do not change by themselves. 
+            -> Methods do not change by themselves.
+
+                  - These two types of tasks run on EVENTS
+                        An EVENT is an interaction:
+                        >> mouse click, key press, object changing values, webpage loading...
+                              
+      -> One of the most common events in JS:
+
+      >> onchange <<
+
+      - Is usually used for an immediate reaction to something changing, usually an input field.
+                  
+            Technically the field is not changed until a user presses the Tab or Enter key or leaves the field.
+                  In this scenario, with onchange event, actions will take place without a user having to click a button.
+                   
+            This is the essence of the onchange event: Actions happen when an object changes.
+
+      ============
+      CODE EXAMPLE
+      ============   
+            
+      // If something in this input field changes, run the getPracticeHours function
+      <input type="number" id="practiceHours" name="Practice Hours:"
+                       onchange="getPracticeHours();" />
+            </p>
+      
+
+      ______
+
+      // This getPracticeHours function fills an HTML element with text that explains a lesson plan
+      // The important thing for this segment, though, is the onchange event itself. 
+
+      function getPracticeHours() {
+            try
+            {
+                  var hoursEntered = parseInt(document.getElementById('practiceHours').value)
+                  var msg1 = 'It will take you '
+                  var msg2 = 20 / hoursEntered
+                  var msg3 = ' weeks to finish this program.'
+                  var msg4 = 'Can you do '
+                  var msg5 = hoursEntered
+                  var msg6 = ' per week for '
+                  var msg7 = ' weeks? Or is this just a "dream?"'
+
+                  document.getElementById('practiceWeeks').innerHTML =
+                        // put concat here
+                        msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);
+                  document.getElementById('practiceDetails').innerHTML = "New classes start on "
+                        + monthName[lessonStartDate.getMonth()] + " " + lessonStartDate.getDate() + ", "
+                        + daysUntilStart + " days from now." + "<br />";
+                            
+                  lessonSchedule();
+                       
+                        
+            }
+            catch(error)
+            {
+                  alert("Error: " + error.description);
+            }
+      }
+       
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! ONMOUSEOVER !!!
+
+      >> onmouseover event << 
+            
+           - is used To make something more interactive to take place on a webpage when a user rolls a mouse over and object.
+      
+            A common use of this event is to roll a mouse over a thumbnail and have that trigger code to show a larger version of the picture in another image element.
+
+      
+      
+      ============
+      CODE EXAMPLE
+      ============
+      
+      // - Any time you are looking through code that does some interactive action, look for an event.
+      // In this case, each thumbnail image, has an onmouseover event which calls a function called mouseOverPic, and uses a parameter.
+
+      // THESE onmouseover events TELL THIS FUNCTION TO DINAMICALLY UPDATE SOME HTML CODE.
+	
+		<article class="itemthumbnail">
+		      <a href="" onmouseover="mouseOverPic(mandolin);"><img src="images/mandolin.jpg" alt="Mandolin" /></a>
+		</article>
+	        	
+	    	<article class="itemthumbnail">
+			<a href="" onmouseover="mouseOverPic(trombone);"><img src="images/Trombone.jpg" alt="Trombone" /></a>
+		</article>
+
+	    	<article class="itemthumbnail">
+			<a href="" onmouseover="mouseOverPic(drum);"><img src="images/DRUM.jpg" alt="Drum" /></a>
+		</article>
+
+	    	<article class="itemthumbnail">
+		      <a href="" onmouseover="mouseOverPic(kazoo);"><img src="images/Kazoo.jpg" alt="Kazoo" /></a>
+		</article>
+
+	    	<article class="itemthumbnail">
+			<a href="" onmouseover="mouseOverPic(musicbooks);"><img src="images/musicbooks.jpg" alt="Music Books" /></a>
+		</article>      
+
+      
+      _________________
+
+      // THIS VARIABLES DEFINE THE OBJECTS
+
+      var mandolin = new product('F-Style Mandolin',
+            'The exuberant sound of a zealous Mandolin solo harkens the countryside of the Appalachians and effectively expresses the bittersweet melodies of yesteryear. The wood’s natural beauty is amplified by a high-gloss finish, while delivering a generously warm and rich sound.'
+            , 350.00, 'mandolin');
+      var trombone = new product('Student Trombone',
+            'With an exceptional design and outstanding craftsmanship, the enhanced durability of this model will result in years of musical enjoyment and offer any student the opportunity to develop a lifelong affiliation with music.   Designed for easy tone production and projection. Includes mouthpiece and a case.'
+            , 230.00, 'trombone');
+      var drum = new product('Red Floor Tom',
+            'Setting the standards for sound and value, this drum’s ability to resonate is a key factor in achieving an overwhelming performance.  Fitted with a birch shell and stainless steel hoops, this quality hardware comes in a variety of finishes. '
+            , 150.00, 'drum');
+      var kazoo = new product('Kazoo 3-Pack',
+            'The easiest of all instruments to learn and play, the affordability of kazoos makes outfitting the largest of music classes an easy task. Color selection may vary based on current inventory. '
+            , 3.95, 'kazoo');
+      var musicbooks = new product('College Prep Textbook Pack: Volume 3',
+            'This collection of textbooks will prepare any aspiring music major for their third and fourth years of study, focusing on the Romantic and Post-Tonal eras of music, instrumentation and orchestration techniques, as well as current electronic and computer-generated music and recording methods. '
+            , 340.00, 'musicbooks');      
+
+      _________________
+
+
+      // the function takes a parameter and changes four HTML elements, one being an image source and the other three, innerHTML properties
+
+      // It is using an object called product and four properties. 
+      function mouseOverPic(product) {
+            //the objects are defined as these variables above
+            document.getElementById('itemImage').src = "images\\" + product.imgsrc + ".jpg";
+            document.getElementById('itemName').innerHTML = product.item;
+            document.getElementById('itemDescription').innerHTML = product.description;
+            document.getElementById('itemPrice').innerHTML = product.price.toFixed(2);
+      } 
+
+      _________________
+
+      // The product definition is in the code below:
+      
+      // THIS PRODUCT FUNCTION DEFINES THE OBJECT
+      function product(item, description, price, imgsrc) {
+            this.item = item;
+            this.description = description;
+            this.price = price;
+            this.imgsrc = imgsrc;
+      }
+
+      
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+      
+      !!! ONLOAD !!!
+
+      -> With the >> onload << event, action is taken when an HTML element loads.
+      
+            The most common use for this event is to have something happen, such as an alert, when the body of a webpage loads.
+
+      ============
+      CODE EXAMPLE
+      ============  
+      
+      <body onload="alert('This is an example of the onload event');"> 
+
+      // FRIENDLY REMINDER: Because the statement starts with double quotes, any text with inner quotes needs to be single quotes.
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! ONCLICK !!!
+
+      - The most commonly coded event in JavaScript is the >> onclick << event.
+            Code is run when an object, usually a button, is clicked.
+
+      
+            
+      ============
+      CODE EXAMPLE
+      ============     
+
+      // Through all the functions you should see two main actions taken as a result of an onclick event:
+            // a function runs, or code within the event runs.
+ 
+      <div class="itemquantity">
+            <p>
+                  <input type="text" value="1" id="manqty"> <br/>
+                        <button id="manqtyadd" onclick="addOne('manqty');">+</button>
+                        <button id="manqtysubtract" onclick="javascript: document.getElementById('manqty').value--;">-</button>  
+                        <button id="manqtyzero" onclick="javascript: document.getElementById('manqty').value = 0;">Clear</button>
+                        <button id="manqtyfive" onclick="addFive('manqty');">Add Five</button>
+             </p>
+      </div>
+
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! ONMOUSEOUT !!!
+
+      -> Different from onmouseover, the >> onmouseout << event, triggers action when a mouse is moved away from an object.
+
+      
+            
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      <div class="order_buttons">
+            <p>
+                  <input type="button" class="buttons" value="Update Cart"
+                        onclick="updateCart();"
+                              // The code below will display a message when someone moves their mouse away from the Update Cart button.
+                        onmouseout="document.getElementById('cartMsg').innerHTML = 
+                              'Click the Update Cart button to get the latest order total.'"; />
+            </p>
+            <p><input type="button" class="buttons" value="Checkout" onclick="checkoutWindow();"></p>
+            <p><input type="button" class="buttons" value="Close Checkout" onclick="closeCheckOut();" /></p>
+      </div>
+
+            <p id="cartMsg">&nbsp;</p>
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! ONKEYDOWN !!!
+
+      -> The >> onkeydown << event triggers action when a user presses a key on a keyboard.
+            It is now used all that often by itself in a production environment, 
+            but can be used to encourage a webpage user to use buttons instead of typing. 
+                  
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      // The code below will use the Mandolin input field to test a message to send to a user when any key is pressed
+      // while the cursor is in this input field.
+
+      <div class="itemquantity">
+            <p>
+                  // on the line below there's the input tag for rhis field, which happens to control the quantity of mandolins ordered.
+                  <input type="text" value="1" id="manqty"
+                  // inside the input tag is the onkeydown event that should work when any key is pressed.
+                  onkeydown="alert('It may be easier to use buttons to change this field');" > <br/>
+                  <button id="manqtyadd" onclick="addOne('manqty');">+</button>
+                  <button id="manqtysubtract" onclick="javascript: document.getElementById('manqty').value--;">-</button>  
+                  <button id="manqtyzero" onclick="javascript: document.getElementById('manqty').value = 0;">Clear</button>
+                  <button id="manqtyfive" onclick="addFive('manqty');">Add Five</button>
+            </p>
+      </div>
+
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                          ------------------------
+                                          OUTPUT TO HTML DOCUMENTS
+                                          ------------------------
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! INNER HTML !!!
+
+      -> This allows to dynamically control the text in between the opening and closing tags of an existing HTML element.
+
+      -> The two common ways to affect the innerHTML property for an element are:
+            - to use it to change its innerHTML,
+            - or to append to its existing innerHTML.
+
+      -> The key to making the innerHTML property work is to know:
+            - when to use = to replace its contents 
+            - and when to use += to append to existing content.
+
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      // Whatever is currently in the element with an ID of practiceWeeks ...  
+      document.getElementById('practiceWeeks').innerHTML =
+      // ... is getting replaced on the line below.
+            msg1.concat(msg2, msg3) + '<br />' + msg4.concat(msg5, msg6, msg2, msg7);
+      // Text is also being replaced here. We know this because of the equal sign... 
+      document.getElementById('practiceDetails').innerHTML = "New classes start on "
+            + monthName[lessonStartDate.getMonth()] + " " + lessonStartDate.getDate() + ", "
+            + daysUntilStart + " days from now." + "<br />";
+      
+      // ... The equals sign is the indicator that whatever was there is getting replaced.
+
+____________________
+
+      Sometimes though, you want to add to, or append to, existing content within an HTML tag.
+
+      // Here the element ID of lessonSchedule is being stored inside of a variable called detailsSchedule.
+      var detailsSchedule = document.getElementById('lessonSchedule')
+            lessonEndDate.setDate(lessonEndDate.getDate() + 0);
+
+      // Then, its content is being appended to, as indicated with the += as part of the code.
+      detailsSchedule.innerHTML += "<br /> First lesson: "
+            + lessonStartDate.toLocaleDateString() + "<br />Subsequent lessons: ";
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! DOCUMENT.WRITE !!!
+
+      -> While the innerHTML property is great for being able to change text within an existing HTML element,
+            the document.write is great to dynamically write text onto a page,
+            even if some elements that is needed to add are not present.
+
+      -> This method allows us to write both HTML elements and text to a webpage.
+                   
+      ============
+      CODE EXAMPLE
+      ============ 
+      
+      // The new window checkWin is being taken, and dynamically writing HTML to it, using the document.write method. 
+      function checkoutWindow() {   
+            checkWin = window.open("checkout.htm", "", "width=300, height=300");
+            // specifically, a paragraph is being added telling the users that this document is current as of the current date and time.
+            checkWin.document.write("<p>This document is current as of " + Date());          
+      }
+            
+       
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                              --------------------------------
+                              LOCATE, MODIFY, AND ADD ELEMENTS
+                              --------------------------------
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+
+      !!! GET ELEMENT BY ID !!!
+
+      -> The easiest way to locate an element is by id, that is, if an element has an id.
+
+      -> For this reason is recommended to get an id to any HTML element that could possibly be used in JavaScript code.
+
+      -> Once you get an elements id, you can change any of its properties using JavaScript.
+        
+      -> The getElementById method is part of the document object, so we call the method through that object.
+
+      -> Because getElementById is used heavily in JavaScript, 
+            it is a best practice to have a consistent naming convention for your ids for your elements.
+
+      ============
+      CODE EXAMPLE
+      ============    
+      
+      // In parentheses, we define the elements id, and from here, we can change any of that elements properties.
+      // Sometimes, in a large code example, we need to be able to find the element being changed.
+
+      document.getElementById('itemImage').src = "images\\" + product.imgsrc + ".jpg";   
+      
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! GET ELEMENTS BY TAG NAME !!!
+
+      -> When working with HTML files, especially large ones, you will want a way to get all elements of a certain HTML tag.
+            Even if you are just using this for testing purposes, which wil usually be the case, 
+            you will want to make sure that you can list these elements so that you know how many you have,
+            and if something is not working, having the wrong element could be the reason why.
+      
+      ============
+      CODE EXAMPLE
+      ============   
+            
+      function getImages() {
+            // it uses the getElementsByTagName method, in this case for the image tag. This actually creates an array of images ...            
+            var imgList = document.getElementsByTagName("img");
+            // which then, through a for loop, displays each image source on its own line.
+            for (var i = 0; i < imgList.length; i++) {
+                document.getElementById('output').innerHTML += "<br />" + imgList[i].src;
+            }
+        }
+
+      ______________________
+
+      ON THE CONSOLE:
+
+      i=document.getElementsByTagName("img")
+
+      // press enter to see the result
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! GET ELEMENTS BY CLASS NAME !!!
+
+      -> Similar to obtaining information about tags, you may want to obtain information about classes, 
+            such as how many times a class is used, for example.
+            
+      -> This can help you determine whether changing class attributes will have a major impact on the look of your website, or not.
+     
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      // The function below stores the class named social in a variable called classList, using the document.getElementsByClassName method.
+      function getClasses() {
+            var classList = document.getElementsByClassName("social");
+      // The output element is updated to show the number of times this class is being used, using this classList.length property.
+                  document.getElementById('output').innerHTML += "<br />" + classList.length;
+      }
+       
+      ... 
+
+      // And the function above is tied to an onclick event for a button, specifically the Get Social Classes button.
+
+      <input type="button" class="buttons" value="Get Social Classes" onclick="getClasses();"/>
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! SET ATTRIBUTE !!!
+
+      -> To better cater a website to your audience, you may want to dynamically change an element attribute,
+            such as its class, on an event, such as the click of a button
+
+            - For example, you may want to change the class assigned to a heading if a user wants to see your 
+                  page in a different way, after the page is loaded.
+
+            - Remember that the getElementsByTagName method store a set of values in an array.
+                  Arrays are zero-based, so the first item in the array is item 0.
+                  
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      // When the button is clicked, a function called setAltHeadingClass runs
+      <input type="button" class="buttons" value="Change Heading" onclick="setAltHeadingClass();"/>
+
+      ...
+
+      // The function takes the first instance of an H1 tag, using the getElementsByTagName method,
+      // and then uses the setAttribute method to set the class of this tag to the altheheading class
+      function setAltHeadingClass() {
+            // the zero here represents the first H1 tag on the page.
+            document.getElementsByTagName("h1")[0].setAttribute("class", "altheading");
+      }
+
+      ____________
+
+      CSS
+
+      // here is the new setting for the headings
+      .altheading {
+            font-size: 20pt;
+            text-align: center;
+            background-color: lightcyan;
+      }
+
+
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! CREATE ELEMENT !!!
+
+      - This method allows us to dynamically create an element and place that element in a specific spot on a webpage,
+            so long as that spot is an element we can access through the getElementById method, meaning the element has an id.
+                  
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      // here there's an onclick event that runs the addConstructionMsg function.
+      <input type="button" class="buttons" value="Create Element" onclick="addConstructionMsg();"/>
+      _______________
+
+      // In this the createElement method, which is part of the document object, ...
+      function addConstructionMsg() {
+            // ... is used to create a new p tag, a new paragraph tag, and store it inside a variable called constructionP. 
+            var constructionP = document.createElement("p");
+            // Then, a text node, also a method under the document object, 
+            // which is basically a text placeholder, is created and stored in a value called constructionText.
+            var constructionText = document.createTextNode("This page is under construction. " +
+                  "We're not actually comparing instruments right now.");
+                  // that constructionText is appended on the code below to the constructionP element.
+                  constructionP.appendChild(constructionText);
+            // Here, we can be very specific about where this new element will appear on the page.
+            // We are using the HTML element called sitelogo, and to it we are appending this new paragraph.
+            document.getElementById('sitelogo').appendChild(constructionP);
+      }
+
+      ______________
+       
+      // the sitelogo is actually found in a div tag on another line. 
+      // That explains the message displaying just after the logo on the page.
+      
+      <div id="sitelogo">
+		<a href="index.html"><img src="images/logo.png" alt="The Music Store"/></a>
+	</div>
+      
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! EVENT HANDLERS AND LISTENERS !!!
+
+      -> onclick is one of the most popular event handlers for the JavaScript Document Object Model or DOM for short.
+
+      -> Event handlers can be added for HTML tags as well, as with an onload event.
+
+      -> The other way to create interactivity is through an event listener. 
+                  
+      ============
+      CODE EXAMPLE
+      ============     
+ 
+      <input type="button" id="getDate" class="buttons" value="Get the current date" />
+
+      __________________
+
+      // Here we have an event listener being added for a click on that button with the getDate id.
+      document.getElementById('getDate').addEventListener("click", getCurrentDate);
+
+      // The click event is coupled with a function called getCurrentDate which starts below.
+      function getCurrentDate() {
+            document.getElementById('output').innerHTML = Date();
+      } 
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+     
+      !!! EXAM TIPS !!!
+
+      -> Know where the pieces fit in a Document Object Model
+            - Everything stems downward from the document object
+
+      -> Know the differences among the HTML events that have been covered.
+            - onchange, onmouseover, onload, onclick, onmouseout, and onkeydown.
+            - Know when you would use each of these.
+
+      -> Remember that innerHTML is a property that works on an existing HTML element.
+            - The document.write method dynamically writes elements and text to a webpage.
+
+      -> When working dynamically with elements and attributes,
+            - know the differences among getElementById, getElementsByTagName, getElementsByClassName
+            - Know when you would use each one for the exam.
+            - Know how to use SetAttribute and CreateElement methods.
+
+
+
+      
+   
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+ 
+
 
 
 
