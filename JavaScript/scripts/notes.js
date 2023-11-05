@@ -2499,8 +2499,8 @@ ________________________________________________________________________________
       - Know how to use a FOR LOOP, when to use a conditional loop (while or do), and know when to use a break or continue statement.
    
 
-____________________________________________________________________________________________________
-____________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
 __________________________________________________________________________________________________________
 __________________________________________________________________________________________________________
 __________________________________________________________________________________________________________
@@ -2645,10 +2645,8 @@ ______|_____         ______|______         ______|______________________________
                                                                                                         |                    |
                                                                                                         |      <header>      |
                                                                                                         |____________________|
-
-
-
-                                                                                                        ___________________________________________________________________________________________________
+                                                                                                        
+____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -2733,7 +2731,8 @@ ________________________________________________________________________________
             
            - is used To make something more interactive to take place on a webpage when a user rolls a mouse over and object.
       
-            A common use of this event is to roll a mouse over a thumbnail and have that trigger code to show a larger version of the picture in another image element.
+            A common use of this event is to roll a mouse over a thumbnail and have that trigger code to show a 
+                  larger version of the picture in another image element.
 
       
       
@@ -3225,16 +3224,529 @@ ________________________________________________________________________________
             - Know how to use SetAttribute and CreateElement methods.
 
 
-
-      
-   
-
 ____________________________________________________________________________________________________
 ____________________________________________________________________________________________________
  
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
+
+__________________________________________________________________________________________________________
+__________________________________________________________________________________________________________
 
 
+                                          ********************
+                                          DOMAIN 5 - HTML FORM
+                                          ********************
 
+                                          
+            Complete and debug code that retrieves form input and sets form field values 
+            Retrieving form values; identifying the DOM path; getting values from different types of elements; prepopulating, masking, and updating values 
+
+            Complete and debug code that performs input validation 
+            Case, string comparisons, Not-A-Number (NaN), not blank 
+
+            Describe the form submission process 
+            onsubmit, POST vs. GET, potential targets for submission
+
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                              ----------------------------------------
+                              RETRIEVE INPUT AND SET FORM FIELD VALUES
+                              ----------------------------------------
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! RETRIEVE FORM VALUES !!!
+
+      -> Input tags with text typically do not have innerHTML text, so we will usually use the value 
+            attribute to retrieve what someone has filled out in an input field.
+     
+      
+      ============
+      CODE EXAMPLE
+      ============
+      
+      <tr>
+            <td>                  
+                  <label for="firstname">First Name</label>
+            </td>
+            <td>
+                  // Here ...
+                  <input type="text" name="firstname" id="firstName" />
+            </td>
+      </tr>
+      <tr>
+            <td>                  
+                  <label for="lastname">Last Name</label>
+            </td>
+            <td>
+                  // And here, we can notice that there's no text in between any opening and closing tag, so there is no innerHTML here. 
+                  <input type="text" name="lastname" id="lastName" />
+            </td>
+      </tr>
+
+      ________________________________
+
+      <p id="testResults">&nbsp;</p>
+
+      _________________________________
+
+
+      function fillTestResults() {
+            // First it stores in a testResults variable the testResults element (that is the <p> line above). 
+            var testResults = document.getElementById('testResults');
+            // Then two variables, firstName and lastName, are built using the VALUE property 
+            // of the first and lastName elements, not these innerHTML.       
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+
+            // The last part of this function uses the firstName and lastName values 
+            // as part of a message that fills the innerHTML of the testResults element.
+            testResults.innerHTML = "You entered " + firstName + " " + lastName + " for a name.";
+        }
+ 
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! DOM PATH !!!
+
+      The examples below show how we can retriece
+
+      ============
+      CODE EXAMPLE
+      ============  
+
+      >> ON THE CONSOLE <<
+
+        // To see a list of all forms in the page:
+
+        document.forms
+
+        // To see a list of the elements on the form:
+        
+        document.forms[0].elements
+
+        // To get a value of an individual field at any time through the getElementById method:
+
+        document.GetElementById(firstName).value  
+     
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! VALUES FROM ELEMENTS !!!
+
+   
+
+      ============
+      CODE EXAMPLE
+      ============ 
+
+      // Here there is the attribute with value inside of each option.
+      // The attribute will be used to retrieve the chosen option
+      
+      // **To add how they heard about this website 
+      <select name="found" id="found">
+            <optgroup label="Media">
+                  <option value="TV">TV</option>
+                  <option value="Radio">Radio</option>
+                  <option value="Other">Other</option>
+            </optgroup>
+            <optgroup label="Web">
+                  <option value="Google">Google</option>
+                  <option value="Bing">Bing</option>
+            </optgroup>
+      </select>
+
+
+      ______________________________________________
+      
+      function fillTestResults() {
+            var testResults = document.getElementById('testResults');
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+
+            // **To add how they heard about this website 
+            var found = document.getElementById('found').value;
+            // Then add the result from the line above in the code below
+            testResults.innerHTML = "You entered " + firstName + " " + lastName 
+                  + " for a name. You found us via " + found + ".";
+      }
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! PREPOPULATING VALUES !!!
+
+      -> It allows the user to dynamically fill out a field with a value pre defined from a list of options. 
+
+      ============
+      CODE EXAMPLE
+      ============  
+      
+      // this function uses a parameter called location ... **
+      function fillState(location) {
+            var state = document.getElementById('state');
+            if (state.value == '') {
+                  // * ... if location is equal to Salt Lake City ...
+                  if (location == 'Salt Lake City') {
+                        //... The State field will be set to UT.
+                        state.value = 'UT';
+                  }
+
+                  // * ... if location will be equal to Summerlin ...
+                  else if (location == 'Summerlin') {
+                        // ... then the state field will be set to NV.
+                        state.value = 'NV';
+                  }
+
+                  // Otherwise the state field will be set to null
+                  else {
+                        state.value = null;
+                  }
+            }
+      }
+      
+      _________________________________
+
+      // The function is attached with the onchange code 
+      // so it can pass whatever is chosen through to the function when the select value is changed. 
+      <select onchange="fillState(this.value);" name="location" id="location">
+            <option value=""></option>
+            <option value="Salt Lake City">Salt Lake City</option>
+            <option value="Summerlin">Summerlin</option>
+      </select>
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+
+      !!! MASKING VALUES !!!
+
+      -> When filling out sensitive fields on a form, such as a password field, you may want to mask the characters typed 
+            with dots or asterisks or something similar.
+   
+      ============
+      CODE EXAMPLE
+      ============  
+      
+      // By just changing the type to password, instead of text, we can already mask an input field on a webpage.
+      <td>
+            <input type="password" name="password" id="password" />
+      </td>
+                                 
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                          ----------------
+                                          INPUT VALIDATION
+                                          ----------------
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! UPPER AND LOWER CASE !!!
+
+      -> JavaScript is a case-sensitive language. This goes for values as they are being evaluated as well.
+
+      -> With form fields it might be needed consistent casing no matter how data is entered.
+            For these situations, to convert text to its upper or lowercase equivalent at any time.
+
+      ============
+      CODE EXAMPLE
+      ============   
+         
+      // This onchange event calls a function called convertUpper and passes through two parameters: 
+      // the value of this field, and the id of this field. 
+      <td>
+            <input type="text" name="state" id="state" onchange="convertUpper(this.value, 'state');"/>
+      </td>
+
+      _____________________
+
+      // In this function, the two parameters are assigned values of text and field.
+      function convertUpper(text, field) {
+            // The field value is then converted to the uppercase version of the text using the toUpperCase method.
+            document.getElementById(field).value = text.toUpperCase();
+      }
+
+      _______
+
+      // An example to change it to lowercase.
+      function convertLower(text, field) {
+            document.getElementById(field).value = text.toLowerCase();
+      }
+
+      ...
+ 
+      // Because in JavaScript we do have a built-in toLowerCase method we can use on text to convert it to lowercase.
+
+      // Here we add the onchange event and it needs the id of the field, which is in this case 'instrument'.
+      <input list="instruments" name="instrument" id="instrument" onchange="convertLower(this.value, 'instrument');;" />
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! STRING COMPARISONS !!!
+
+      -> The fact that JavaScript is a case sensitive language, even for values in form fields, 
+            can present a problem when trying to use a logical operator, 
+            such as an if statement, to check the text entered in those fields.
+
+            - To solve this comparison issue, a case conversion, to make the data uniform, is what is needed.
+      
+      ============
+      CODE EXAMPLE
+      ============
+
+      // Someone might type las vegas (for example), instead of Las Vegas. To make it more uniform: 
+      
+      // This function checks if the city is Las Vegas or one of the suburbs of Las Vegas, but the case has to be just right.
+      function checkCity(city) {
+            // To avoid this problem of someone typing in a non uniform way, 
+            // it was added a line to convert the city that has been entered to uppercase.
+            city = city.toUpperCase();
+            // Then all the cities need to be in upper case.
+            if (city == 'LAS VEGAS' || city == 'NORTH LAS VEGAS' || city == 'HENDERSON') {
+                document.getElementById('testResults').innerHTML = 'The Summerlin location will open in 2018';
+            }
+
+      }
+
+      // No matter how someone types in the city name, the uppercase version of it is what is being used to 
+      // determine if we want the message 'The Summerlin location will open in 2018' to appear.
+
+      // Another thing to check in the city field, on the form, is if the checkCity function is this.value, the city value, as a parameter.
+      <td>
+            <input type="text" name="city" id="city" onchange="checkCity(this.value);"/>
+      </td>
+      
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+      
+      !!! VALIDATION !!!
+
+      -> Form validation is the action of making sure valid data is entered on a form before the form is submitted.
+
+            - The two most common validation tasks are to make sure requires fields are filled out, and 
+                  to make sure the correct type of data is being entered into a field, 
+                  such as an email address in a email field or a number in a number field.
+      
+      ============
+      CODE EXAMPLE
+      ============  
+      
+      // Some form validation can take place without JavaScript.
+      // This HTML code requires a user to enter a valid email address in this field.
+      <td>
+            input type="email" name="email" id="email" />
+      </td>
+      ______
+
+      // Here is another HTML piece of code that a number type is assigned to this field asking about hours. It'll require a number.
+      <input type="number" size="3" value="hoursPlayed" id="hoursPlayed" />
+   
+      ______
+
+      // To make a field required, is just needed to have a required attribute added.
+      <td>
+            <input type="text" name="zip" id="zip" required />
+      </td>
+
+      ______
+
+      // This JS function is looking at first and lastName fields on this form.
+      function checkFields() {
+            // If either field is blank, ...
+            if (document.getElementById('firstName').value == '' ||
+                  document.getElementById('lastName').value == '') {
+                  // ... an alert will pop up indicating that one or more required name fields is empty.
+                  alert('One or more required name fields is empty');
+            }
+      }
+
+      // Then it needs to add the function above to the onclick event of the test form button.
+      <input type="button" class="buttons" name="testForm" value="Test form" onclick="fillTestResults(); checkFields();"/>
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! NaN !!!
+
+      -> In JavaScript NaN means Not a Number. 
+            - This NaN indicator will usually appear when a calculation expecting a number takes place.
+
+            
+      ============
+      CODE EXAMPLE
+      ============     
+
+      // To avoid it, you can use JS or HTML as the previous code example above to validate the input.
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                          -----------------------
+                                          FORM SUBMISSION PROCESS
+                                          -----------------------
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! ONSUBMIT !!!
+
+      -> >> onsubmit << is the event used to run any last code before a form sends its data to be processed.
+
+            - The most common addition to the onsubmit event will be one or more functions used to validate a form.
+
+      ============
+      CODE EXAMPLE
+      ============     
+      
+      // The onsubmit event is added on this form tag and it could have multiple functions on it. The function added is the one below.
+      <form action="thankyou.htm" method="post" id="contactForm" onsubmit="checkFields();">
+
+      _______
+
+
+      function checkFields() {
+            if (document.getElementById('firstName').value == '' ||
+                document.getElementById('lastName').value == '') {
+                alert('One or more required name fields is empty');
+            }
+      }
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! UNDERSTAND POST VS. GET !!!
+
+      -> When a form is submitted for processing, there are two main methods used to process the data:
+            - POST and GET.
+
+            - The words basically describe what is happening, 
+                  as POST is typically used when one is posting information somewhere, like to a data base,
+                  and GET is typically used when trying to get information, as is the case with search engine.
+
+      - When a form is processed, a method for processing that form is specified, right in the form tag.
+                 
+      - If you are processing secure data, you may not want to use GET method.
+
+
+      ============
+      CODE EXAMPLE
+      ============ 
+      
+      // This form, when processed, uses the POST method. 
+      // This will post information to a data source, usually a database, but it could be just another webpage.
+      <form action="thankyou.htm" method="post" id="contactForm" onsubmit="checkFields();">
+      
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+      !!! UNDERSTAND POTENTIAL SUBMISSION TARGETS !!!
+
+      -> The target is defined in the action attribute of the form tag.
+
+      -> Here is some of the most common targets for data on a form:
+
+            - DATABASE
+                  Data can be added to a database or data can be used to look up a database to return matches.
+
+            - SCRIPT
+                  The data can be directed to a script file for further processing.
+                  The Script file is a go-between for a webpage submitting data to a data source, such as a database 
+                  (for adding or updating).
+                  Many of these are server-side scripts ans use a variety of programming languages
+
+            - WEBPAGE
+                  The data can be processed on another webpage.
+                  That webpage could have direct access to a database.
+      
+                  
+      ============
+      CODE EXAMPLE
+      ============ 
+                
+       
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+     
+      !!! EXAM TIPS !!!
+
+      >> INTERACTING WITH HTML FORMS:
+            - Know how to retrieve form values.
+            - Even though different form elements exist, use the value attribute of the element.
+            - Use the getElementById method to retrieve that form value.
+            - Know that forms are direct descendant of the document object in the DOCUMENT OBJECT MODEL.
+            - Know how to prepopulate fields and how to mask a value typed in an input text box.
+      
+            >> FOR INPUT VALIDATION
+            - Know the role of the toUpperCase and toLowerCase methods.
+            - Remember that for strings to compare accurately, convert the strings to compare to a consistent casing.
+                  "Las Vegas" != "LAS VEGAS"
+            - Know how to use JavaScript to validate a form.
+            - Remember that NaN means Not a Number.
+            - For any validation code that needs to run when a form is submitted, add that function to the onsubmit event of the form.
+            - The action attribute in a form is used to direct where the form is going to go to get processed.
+                  That could be a script, webpage, or database.
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+       
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+                                                ----------
+                                                CONCLUSION
+                                                ----------
+
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+
+      !!! EXAM OBJECTIVES !!!
+
+      -> Make sure you know which code example to use given a situation
+
+            Know when to use:
+                            ______
+                  . for loop      |
+                  . while loop    |--->> For a loop situation
+                  . do loop ______|   
+                  . if
+                  . else if
+                  . nested if
+                  . The order in which the statements go in on code examples.
+                  . For subtopics within the same topic, make sure you understand what differentiates each subtopic.
+                        (For example onclick, onmouseover, onmouseout, onload, onchange, onkeydown)
+
+      - Test your work often and do not be afraid to use the console with whatever browser you are using to help you debug code.
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
 
 
 */
